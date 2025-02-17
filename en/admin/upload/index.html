@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <div class="blur"></div>
+    <div class="container">
+
+        <div class="side_panel">
+            <div class="logo cen">
+                <div class="icon"></div>
+                <h4>DivineTheDeveloper</h4>
+            </div>
+
+            <div class="items"> 
+                <div class="item cen">
+                    <div class="icon"></div>
+                    <h3>DASHBOARD</h3>
+                </div>
+                <div class="item cen">
+                    <div class="icon"></div>
+                    <h3>DASHBOARD</h3>
+                </div>
+                <div class="item cen">
+                    <div class="icon"></div>
+                    <h3>DASHBOARD</h3>
+                </div>
+                <div class="item cen">
+                    <div class="icon"></div>
+                    <h3>DASHBOARD</h3>
+                </div>
+                <div class="item cen">
+                    <div class="icon"></div>
+                    <h3>DASHBOARD</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="stats cen">
+                <div class="value cen">
+                    <h2>52</h2>
+                    <span>Site Visits</span>
+                </div>
+                <div class="value cen">
+                    <h2>52</h2>
+                    <span>Site Visits</span>
+                </div>
+                <div class="value cen">
+                    <h2>52</h2>
+                    <span>Site Visits</span>
+                </div>
+            </div>
+
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="content cen">
+                <form class="cen" id="add-template-form" action="../../../backend/upload.php" method="POST" enctype="multipart/form-data">
+                    <!-- Template Name -->
+                    <label for="name">Template Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter template name" required>
+                    
+                    <!-- Category -->
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="portfolio">Portfolio</option>
+                        <option value="digital_agency">Digital Agency</option>
+                        <option value="corporate">Corporate</option>
+                        <option value="ecommerce">E-Commerce</option>
+                        <option value="blog">Blog</option>
+                        <option value="nonprofit">Nonprofit</option>
+                        <option value="education">Education</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="technology">Technology</option>
+                        <option value="healthcare">Healthcare</option>
+                    </select>
+
+                    <!-- Price -->
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" step="0.01" placeholder="Enter price" required>
+                    
+                    <!-- Short Description -->
+                    <label for="short_description">Short Description</label>
+                    <textarea id="short_description" name="short_description" placeholder="Enter a brief description" required></textarea>
+                    
+                    <!-- Main Image Upload -->
+                    <label for="main_image">Main Image</label>
+                    <input type="file" id="main_image" name="main_image" accept="image/*" required>
+
+                    <!-- Mobile Image Upload -->
+                    <label for="mobile_image">Mobile Image</label>
+                    <input type="file" id="mobile_image" name="mobile_image" accept="image/*" required>
+
+                    <!-- Additional Images Upload -->
+                    <label>Template Images</label>
+                    <input type="file" name="shot_1" accept="image/*" required>
+                    <input type="file" name="shot_2" accept="image/*">
+                    <input type="file" name="shot_3" accept="image/*">
+                    <input type="file" name="shot_4" accept="image/*">
+                    <input type="file" name="shot_5" accept="image/*">
+                    <input type="file" name="shot_6" accept="image/*">
+                    <input type="file" name="shot_7" accept="image/*">
+                    <input type="file" name="shot_8" accept="image/*">
+                    <input type="file" name="shot_9" accept="image/*">
+                    <input type="file" name="shot_10" accept="image/*">
+                    
+                    <!-- Rating -->
+                    <label for="rating">Rating</label>
+                    <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" placeholder="Enter rating (1-5)">
+                    
+                    <!-- Preview URL -->
+                    <label for="preview_url">Preview URL</label>
+                    <input type="url" id="preview_url" name="preview_url" placeholder="Enter preview URL">
+                    
+                    <!-- Submit Button -->
+                    <button type="submit">Add Template</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: Add JavaScript for form validation -->
+    <script>
+        document.getElementById('add-template-form').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value;
+            const category = document.getElementById('category').value;
+            const price = document.getElementById('price').value;
+            const shortDescription = document.getElementById('short_description').value;
+            
+            if (!name || !category || !price || !shortDescription) {
+                e.preventDefault();
+                alert('Please fill in all required fields');
+            }
+        });
+    </script>
+</body>
+</html>

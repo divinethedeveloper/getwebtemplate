@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Red Hat Display";
+}
+
+.yellow{
+    color: yellow !important;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow-x: hidden;
+    
+}
+
+.new_hero{
+    height: 100vh;
+    width: 100%;
+    /* border: 2px solid black; */
+    position: relative;
+}
+
+.f_image{
+    position: absolute;
+    top: -10rem;
+    right: -5rem;
+    width: 60%;
+}
+.f_image img{
+    width: 100%;
+}
+
+.t_left{
+    position: absolute;
+    width: 40rem;
+    height: 55rem;
+    top: -20rem;
+    left: -40rem;
+    transform: rotate(60deg);
+    background: url(../assets/divinethedevelopers_hero.png), rgba(55, 55, 55, 0.127);
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-position: center;    border-radius: 10rem;
+
+}
+.b_left{
+    position: absolute;
+    width: 40rem;
+    height: 55rem;
+    bottom: -40rem;
+    left: -40rem;
+    transform: rotate(-160deg);
+    background: url(../assets/divinethedevelopers_hero.png);
+    background-size: cover;
+    background-position: center;
+     border-radius: 10rem;
+
+}
+
+.hero_text{
+    position: absolute;
+    z-index: 140;
+    color: #222;
+    margin-top:  calc(5% + 5vh + 5rem);
+    padding: 5vw;
+    width: 55%;
+ 
+}
+
+.hero_text h1{
+    font-size: 4rem;
+    font-weight: 300;
+    margin-top: 2rem;
+    text-transform: capitalize;
+}
+.p{
+    margin-top: 4rem;
+    font-weight: 200;
+    font-size: .9rem;
+}
+.hero_text .btn{
+    margin-top: 4rem;
+    
+}
+.bg1{
+    margin-top: -10vh;
+    margin-left: -10vw;
+    height: 125vh;
+    width: 125vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+     background: url(../assets/Screenshot\ 2025-01-12\ at\ 6.16.14\ PM.png);
+    background-size: cover;
+    background-position: center;
+     background-repeat: no-repeat;
+    opacity: .2;
+    transition: 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+
+
+}
+
+.bg1.active{
+    opacity: 1;
+    margin-top: 0vh;
+    margin-left: 0vw;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+.bg1_c{
+    height: 100%;
+    width: 100%;
+    background: #e8e8e8;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 1s ease-in-out;
+    z-index: -1;
+}
+
+.bg1_c.active{
+    background: #e8e8e800;
+
+
+}
+
+.text_section{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    width: 42%;
+     display: flex;
+    flex-direction: column;
+     padding-left: 2%;
+
+}
+
+.text_section h4{
+    font-size: 4rem;
+}
+
+.text_section h6{
+    font-size: 400;
+    margin-top: 3rem;
+    font-size: 1.3rem;
+}
+.line{
+    width: 5rem;
+    height: 5px;
+    background: rgba(128, 128, 128, 0.386);
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+
+.mockup{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: max-content;
+}
+
+.sec{
+    padding: 6vw;
+
+
+}
+.mockup h1{
+    font-size: calc(3vw + 1rem);
+    line-height: calc(4vw + 1rem);
+}
+
+h1 span{
+    color:  #fa709a;
+    font-size: 3.7rem;
+}
+
+.mockup img{
+    width: 170%;
+}
+
+.sec button{
+    padding: 1.2rem 3rem;
+    margin-top: 2rem;
+}
+
+.bottom{
+    width: 100%;
+    position: absolute;
+    bottom: -7rem;
+    left: 0;
+}
+
+.templates{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+
+}
+
+.templates .template {
+    height: 30rem;
+    width: 20rem;
+     margin: 3rem;
+    position: relative;
+    margin-top: 6rem;
+ 
+ }
+
+.t_scroll {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: start; /* Align image to the top initially */
+    overflow: hidden; /* Ensures the image doesn't spill out of the container */
+    transition: .6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.046);
+}
+
+.template:hover .t_scroll{
+    height: 110%;
+    width: 110%;
+    margin-left: -5%;
+    margin-top: -5%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+
+
+ 
+}
+
+.t_scroll img {
+    position: absolute;
+    width: 100%; /* Scale image to container width */
+    height: auto; /* Maintain aspect ratio */
+    transform: translateY(0); /* Start at the top */
+    transition: transform 8s cubic-bezier(0.455, 0.03, 0.515, 0.955); /* Smooth transition on hover */
+}
+
+.template:hover .t_scroll img {
+    transform: translateY(calc(-100% + 30rem)); /* Scroll to the bottom */
+}
+
+
+
+.template h4{
+    position: absolute;
+    bottom: -3rem;
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    opacity: 1;
+    color: #222;
+    background: rgba(255, 255, 255, 0);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0);
+    transition: 2s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+  
+}
+
+.template:hover h4{
+    opacity: 0;
+    bottom: 2rem;
+    background: white;
+    color: white;
+
+}
+.gif{
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gif img{
+    width: 10rem;
+}
+
+.gif.active{
+    opacity: 0;
+}
+.cen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.see_more{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .invisible{
+        opacity: 0;
+    }
+    .ft span{
+        font-size: .8rem;
+        display: none;
+
+    }
+
+
+  
+    
+    
+}

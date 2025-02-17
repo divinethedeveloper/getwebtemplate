@@ -1,0 +1,235 @@
+.section1{
+    width: 120%;
+    margin-left: -10%;
+    padding: 5rem 10rem;
+    border: 1px solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.section span{
+    border: 1px solid green;
+}
+
+span .main_image{
+    height: 40rem;
+    width: 40rem;
+    position: relative;
+    border: 1px solid green;
+}
+span .text_box{
+    height: 40rem;
+    width: 40rem;
+    border: 1px solid;
+    padding: 1rem;
+}
+
+.text_box h4{
+    margin-top: 2rem;
+}
+.text_box h1{
+    font-size: 3rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    line-height: 3.5rem;
+}
+.line{
+    width: 5rem;
+    height: 5px;
+    background: rgba(128, 128, 128, 0.386);
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+
+.text_box p{
+    font-size: .9rem;
+    color: grey;
+    line-height: 1.2rem;
+    margin-top: 3rem;
+}
+.btn{
+    margin-top: 3rem;
+}
+
+.main_bgg{
+    position: relative !important;
+    border: 3px solid blue;
+ }
+
+
+ .img1{
+    height: 35rem;
+    width: 35rem;
+    border: 1px solid;
+    background: rgb(255, 255, 255);
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 0;
+ }
+
+ .img2{
+    position: absolute;
+    right: -5rem;
+    bottom: 0;
+    width: 50%;
+    height: 60%;
+    background: grey;
+    border-radius: 2rem;
+    z-index: 2;
+ }
+ .img3{
+    position: absolute;
+    right: 0;
+    bottom: 30%;
+    width: 50%;
+    height: 60%;
+    background: rgb(91, 14, 205);
+    border-radius: 2rem;
+ }
+
+ .section2{
+    margin-top: 5rem;
+ }
+
+.section2 span{
+    display: flex;
+}
+
+.section2 span .sub{
+    height: 25rem;
+    width: 25rem;
+    border: 1px solid;
+    margin: 3rem;
+}
+.s1{
+    margin-top: 10rem !important;
+}
+.s2{
+    margin-top: 20rem !important;
+}
+.s3{
+    margin-top: 30rem !important;
+}
+.section2 .main .text_box{
+    height: max-content;
+}
+
+.sp2{
+    border: 1px solid;
+    margin-top: -20rem;
+    display: flex;
+    justify-content: center;
+}
+
+.section3{
+    flex-direction: column !important;
+    padding: 0vw;
+    margin-top: 10rem;
+}
+
+.special_text{
+    font-size: 1.3rem;
+}
+
+.section3 h4{
+    margin-top: 4rem;
+    font-size: 3rem;
+}
+
+.section3 p{
+    margin-top: 4rem;
+    font-size: .9rem;
+}
+
+.cards{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.p_card{
+    height: 35rem;
+    width: 22rem;
+    margin: 3vw;
+     position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 0 20px 1px #0558e81b;
+
+
+}
+.p_card .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 20px 1px #0558e8c9;
+
+    background: linear-gradient(45deg, #0557e8, #1f45e1, #3b31d9, #6415cd);
+         background: linear-gradient(45deg, #fa709a, #ff85a1, #f45b84, #ff629e);
+     
+}
+
+.top h3{
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.top h6{
+    font-size: 1.3rem;
+    color: rgb(204, 204, 204);
+     font-weight: 200;
+     border-bottom: 1px solid grey;
+     width: 60%;
+     text-align: center;
+     margin-top: .3rem;
+     padding: .4rem;
+
+}
+
+.top .price{
+    font-size: 4rem;
+    position: relative;
+    margin-top: 1rem;
+}
+.price span{
+     margin-bottom: 2rem !important;
+    position: absolute;
+    top: -.5rem;
+    left: -.7rem;
+    font-size: 1.7rem;
+
+}
+
+.list{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    font-weight: 200;
+    text-align: center;
+    background: linear-gradient(45deg, #f4f8ff, rgba(236, 255, 240, 0.333));
+}
+
+
+.list {
+    /* background: linear-gradient(45deg, #0557e8, #1f45e1, #3b31d9, #6415cd);
+    padding: 1.3rem 3rem;
+    width: max-content;
+    color: white;
+    outline: none;
+    border: none; */
+
+}
