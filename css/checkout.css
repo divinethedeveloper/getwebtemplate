@@ -194,10 +194,10 @@
 
     h3{
         width: 100%;
-        padding-left: 45%;
-        font-size: 1.3rem;
+         font-size: 1.3rem;
         font-weight: 300;
         color: #363636;
+        text-align: center;
     }
 
 /* Add this to your CSS */
@@ -259,4 +259,34 @@
       opacity: 1;
       transform: translateY(0);
   }
+}
+li{
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+    .shots{
+       height: 16rem;
+    }
+
+    .shot.active{
+      width: 30rem;
+      border-radius: 0;
+    }
+    .product_desc{
+      padding: 1rem;
+    }
+    .product_desc aside{
+      width: 100%;
+    }
+    .product_desc h1{
+      font-size: 1.5rem;
+    }
+    .mt5{
+      margin-top: 5rem !important;
+    }
+    
+    
+    
+    
 }

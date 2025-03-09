@@ -37,15 +37,14 @@ if ($result->num_rows > 0) {
 <body>
     <div class="container">
         <?php require_once "../../components/nav.php"; ?>
-
         <div class="content cen">
-            <div id="next" class="shots">
+            <div class="shots">
                 <div class="wrap">
                 <?php
                 // Loop through the possible shots (shot_1 to shot_10)
                 for ($i = 1; $i <= 10; $i++) {
                     if (!empty($template["shot_$i"])) {
-                        echo '<div class="shot s' . $i . ($i === 1 ? ' active' : '') . '">';
+                        echo '<div class="shot s' . $i . ($i === 1 ? ' active' : '') . '" onclick="previewImage(this)">';
                         echo '<img alt="Template Screenshot ' . $i . '" src="../../backend/' . htmlspecialchars($template["shot_$i"]) . '">';
                         echo '</div>';
                     }
@@ -53,11 +52,43 @@ if ($result->num_rows > 0) {
                 ?>
                 </div>
             </div>
+            
+            <!-- Preview Modal -->
+            <div id="imagePreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
+                <span onclick="closePreview()" style="position: absolute; right: 25px; top: 15px; color: white; font-size: 35px; cursor: pointer;">&times;</span>
+                <img id="previewImage" style="max-width: 90%; max-height: 90%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
         </div>
+
+        <script>
+            function previewImage(element) {
+                const modal = document.getElementById('imagePreviewModal');
+                const previewImg = document.getElementById('previewImage');
+                const sourceImg = element.querySelector('img');
+                
+                previewImg.src = sourceImg.src;
+                modal.style.display = 'block';
+                
+                // Prevent body scrolling when modal is open
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closePreview() {
+                document.getElementById('imagePreviewModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close modal when clicking outside the image
+            document.getElementById('imagePreviewModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePreview();
+                }
+            });
+        </script>
 
         <div class="buttons">
             <button class="btn" id="prev">Prev</button>
-            <button class="btn" id="next2">Next</button>
+            <button class="btn" id="next">Next</button>
         </div>
 
         <div class="preview cen">
@@ -81,12 +112,15 @@ if ($result->num_rows > 0) {
                 Buy Now
             </div>
             <div class="dash">
-                */purchasing gets you access to your personal dashboard to make changes to your website. <br>
-                */30 days money back guarantee
+                <ul>
+                    <li>✓ Instant dashboard access to download your template for wordpress, custom code or other CMS's</li>
+                    <li>✓ Optional professional setup service available</li>
+                    <li>✓ 30-day money-back guarantee</li>
+                </ul>
             </div>
         </div>
 
-        <h3>Similar Templates</h3>
+        <h3 class="mt5">Similar Templatesss</h3>
         <div class="templates">
             <?php
             // Fetch other templates for similar suggestions
@@ -106,6 +140,7 @@ if ($result->num_rows > 0) {
                     echo '</div>';
                 }
             }
+
             ?>
         </div>
     </div>
@@ -119,7 +154,7 @@ function payWithPaystack(email) {
     let handler = PaystackPop.setup({
         key: 'pk_live_00534fd721dcafd1455164b51e4ac43922104c9a',
         email: email, // Use the email from input
-        amount: <?php echo $template['price'] * 100; ?>,
+        amount: <?php echo (($template['price'] * 100) * 15.8); ?>,
         currency: 'GHS',
         ref: '' + Math.floor((Math.random() * 1000000000) + 1),
         metadata: {
