@@ -15,57 +15,7 @@
 
     <?php require_once "../../components/nav.php"; ?>
 
-        <!-- <div class="bg1">
-            <div class="bg1_c">
-                <img class="bottom" src="../../assets/bottom.png" alt="">
-
-            </div>
-
-            <div class="text_section">
-                <h4>Launch Your Business On The Web</h4>
-                <h6>Professional, Ready-Made Websites Built for Success.</h6>
-                <div class="cards">
-                    <div class="card" onclick="location.href='../templates/'">
-                        <h1 class="title" >Business Website</h1>
-                        <button class="btn">Get Started</button>
-                    </div>
-                       <div class="card ml3">
-                        <h1 class="title">Mobile Application</h1>
-                         
-                        <button class="btn">Get Started</button>
-                      </div>
-                      <div  class="blob"></div>
-                </div>
-                
-            </div>
-            
-        </div>
-        <div class="bg2">
-            <div class="bg1_c">
-                <img class="bottom" src="../../assets/bottom.png" alt="">
-
-            </div>
-
-            <div class="text_section">
-                <h4>Launch Your Business On The Web</h4>
-                <h6>Professional, Ready-Made Websites Built for Success.</h6>
-                <div class="cards">
-                    <div class="card" onclick="location.href='../templates/'">
-                        <h1 class="title" >Business Website</h1>
-                        <button class="btn">Get Started</button>
-                    </div>
-                       <div class="card ml3">
-                        <h1 class="title">Mobile Application</h1>
-                         
-                        <button class="btn">Get Started</button>
-                      </div>
-                      <div  class="blob"></div>
-                </div>
-                
-            </div>
-            
-        </div> -->
-
+        
 
         <div class="new_hero">
             <div class="f_image">

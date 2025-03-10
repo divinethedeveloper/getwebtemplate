@@ -1,0 +1,111 @@
+{
+    "greeting": {
+        "keywords": ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening"],
+        "responses": [
+            "Hello! Welcome to Get Business Website. How can I assist you today?",
+            "Hi there! Looking for a professional website? I'm here to help!",
+            "Welcome! Ready to get your business online? Let me guide you through our services."
+        ]
+    },
+    "services": {
+        "keywords": ["services", "help", "assistance", "support"],
+        "responses": [
+            "We offer various financial services including budget information, tax policies, and economic reports. What specific information are you looking for?",
+            "Our services include financial policy management, economic planning, and public finance administration. How can I help you with these?"
+        ]
+    },
+    "contact": {
+        "keywords": ["contact", "phone", "email", "address", "reach", "talk", "speak", "human"],
+        "responses": [
+            "Would you like to speak with our team? I can connect you with a representative right away.",
+            "Our team is available 24/7. Would you like our contact details to discuss your project?",
+            "Ready to get started? I can connect you with our team to begin your website journey."
+        ]
+    },
+    "budget": {
+        "keywords": ["budget", "financial", "spending", "allocation"],
+        "responses": [
+            "Our latest budget statement and economic policy can be found on our website. Would you like me to provide the link?",
+            "Information about the national budget and financial policies is available in our resources section. What specific details are you looking for?"
+        ]
+    },
+    "tax": {
+        "keywords": ["tax", "taxes", "taxation", "revenue"],
+        "responses": [
+            "For tax-related inquiries, please visit our taxation section or contact the Ghana Revenue Authority. Would you like more specific information?",
+            "We handle various tax policies and reforms. What specific tax information are you looking for?"
+        ]
+    },
+    "pricing": {
+        "keywords": ["price", "cost", "pricing", "package", "payment", "fee", "charges", "how much"],
+        "responses": [
+            "Our website packages start from an affordable rate, with flexible payment options. Would you like to see our pricing details?",
+            "We offer competitive pricing with no hidden fees. Each package includes hosting, maintenance, and 24/7 support. Shall I show you our packages?",
+            "Our prices are designed to be budget-friendly while delivering premium quality. Would you like to explore our pricing options?"
+        ]
+    },
+    "timeline": {
+        "keywords": ["time", "long", "duration", "when", "fast", "quick", "days", "delivery"],
+        "responses": [
+            "We can get your business website live within 3 days! Would you like to know how our quick deployment process works?",
+            "Our streamlined process ensures your website goes live in just 3 days. Ready to start your project?",
+            "From selection to launch - just 3 days! Would you like to see how we make it happen?"
+        ]
+    },
+    "templates": {
+        "keywords": ["template", "design", "theme", "layout", "look", "style", "examples"],
+        "responses": [
+            "We have a wide range of professional templates designed for various business needs. Would you like to browse our collection?",
+            "Our templates are modern, mobile-friendly, and fully customizable. Shall I show you some examples?",
+            "Each template is crafted by professional designers to ensure your business stands out. Ready to explore our designs?"
+        ]
+    },
+    "support": {
+        "keywords": ["support", "help", "assistance", "maintain", "update", "change", "edit", "modify"],
+        "responses": [
+            "Our expert team provides 24/7 support for all your website needs. Need any specific information about our support services?",
+            "We handle all technical aspects - updates, maintenance, and security. You focus on your business, we'll handle the rest!",
+            "With our managed service, you get continuous support and regular updates. Would you like to know more about our support features?"
+        ]
+    },
+    "features": {
+        "keywords": ["feature", "include", "offer", "provide", "capability", "function", "dashboard"],
+        "responses": [
+            "Our websites come with: ✓ User-friendly Dashboard ✓ SEO Optimization ✓ Mobile Responsiveness ✓ Security Features ✓ Regular Updates. Want to learn more about any specific feature?",
+            "Each website includes professional features like content management, analytics, and security. Shall I explain these features in detail?",
+            "Get enterprise-level features including SSL, backups, and performance optimization. Would you like more details?"
+        ]
+    },
+    "process": {
+        "keywords": ["process", "step", "how", "work", "start", "begin", "procedure", "order"],
+        "responses": [
+            "Getting started is easy: 1. Choose a template 2. Provide your content 3. We customize and launch within 3 days. Ready to begin?",
+            "Our process is simple: Select, Customize, Launch! Would you like me to guide you through each step?",
+            "We've streamlined the website creation process to be quick and hassle-free. Shall I explain how it works?"
+        ]
+    },
+    "customization": {
+        "keywords": ["custom", "customize", "modify", "change", "brand", "logo", "color", "specific"],
+        "responses": [
+            "All our templates can be fully customized to match your brand identity. Would you like to see customization options?",
+            "We can adapt any template to your specific needs - colors, logos, layout, and more. Shall I show you some examples?",
+            "Tell me about your customization needs, and I'll guide you to the perfect solution for your brand."
+        ]
+    },
+    "seo": {
+        "keywords": ["seo", "search", "google", "rank", "visibility", "traffic", "optimize"],
+        "responses": [
+            "All our websites are SEO-optimized to help your business get found on Google. Want to learn more about our SEO features?",
+            "We implement the latest SEO best practices to improve your search engine visibility. Shall I explain our SEO approach?",
+            "Built-in SEO features help your business rank better on search engines. Would you like more details about our SEO optimization?"
+        ]
+    },
+    "default": {
+        "responses": [
+            "I'm not quite sure about that. Could you please rephrase your question?",
+            "I want to help you better. Could you provide more details about what you're looking for?",
+            "I might need more information to assist you properly. What specific aspect of our website services interests you?",
+            "Let me connect you with our team for more detailed information about that. Would you like their contact details?"
+        ]
+    }
+} 

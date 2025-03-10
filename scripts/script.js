@@ -24,6 +24,7 @@ function remove_items(item_name){
 
 
 function remove_gif() {
+  console.log("remove_gif");
 const gifs = Array.from(document.querySelectorAll('.gif')); // Select all .gif elements
 const usedIndexes = new Set(); // Track used indexes to avoid duplicates
 
