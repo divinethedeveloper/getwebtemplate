@@ -71,7 +71,34 @@
 
 <body>
     <div class="container">
-    <?php require_once "./components/nav.php"; ?>
+        
+        <nav class="nav" aria-label="Main navigation">
+            <div class="search cen">
+                <div class="search-container">
+                    <input id="search-input" type="text" placeholder="Search templates..." aria-label="Search templates">
+                    <button class="button cen" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                    
+                    <div class="search-dropdown" id="search-results">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="logo cen" onclick="window.location.reload()">
+                <a href="" title="Get Business Website - Professional Business Websites">
+                    <img src="./assets/logo/getbusinesswebsite-logo.png" alt="Get Business Website Logo - Professional Website Solutions" width="auto" height="auto">
+                </a>
+            </div>
+            <div class="cart cen">
+                <a href="javascript:void(0)" title="View Shopping Cart" aria-label="Shopping Cart" onclick="toggleCartDropdown()">
+                    <i class="bi bi-bag"></i>
+                </a>
+                <div id="cart-dropdown" class="cart-dropdown">
+                    <div class="cart-content">
+                        <p class="empty-cart-message">There are no items in your cart</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
         <main>
             <section class="new_hero">
@@ -89,7 +116,7 @@
                     <div class="p">
                         Transform your business with a professional website in just 3 days. Our expertly crafted, ready-to-launch websites come with full technical support and a user-friendly dashboard. Get enterprise-level features at a fraction of custom development costs.
                     </div>
-                    <button class="btn" onclick="location.href='./templates/'" aria-label="Browse Website Templates">View Ready-Made Websites</button>
+                    <button class="btn" onclick="location.href='./en/templates/'" aria-label="Browse Website Templates">View Ready-Made Websites</button>
                 </div>
             </section>
 
@@ -109,7 +136,7 @@
                         Focus on your business while our expert team handles all technical aspects.
                         Simply use your dashboard when you need updates!
                     </p>
-                    <button class="btn" onclick="location.href='./templates/'" aria-label="Browse All Templates">Start Your Website Journey</button>
+                    <button class="btn" onclick="location.href='./en/templates/'" aria-label="Browse All Templates">Start Your Website Journey</button>
                 </div>
             </section>
 
@@ -125,14 +152,14 @@
                 
                 if ($result->num_rows > 0):
                     while ($row = $result->fetch_assoc()): ?>
-                        <article class="template" onclick="location.href='../checkout/?id=<?= $row['id'] ?>'" role="button" tabindex="0">
+                        <article class="template" onclick="location.href='./en/checkout/?id=<?= $row['id'] ?>'" role="button" tabindex="0">
                             <div class="gif">
                                 <img src="./assets/gif.gif" alt="Loading animation" loading="lazy">
                             </div>
                             <div class="t_scroll">
                                 <img src="./backend/<?= htmlspecialchars($row['main_image']) ?>" alt="Preview of <?= htmlspecialchars($row['name']) ?> template" loading="lazy">
                             </div>
-                            <h3><?= htmlspecialchars($row['name']) ?></h3>
+                            <h3 class="article_name"><?= htmlspecialchars($row['name']) ?></h3>
                         </article>
                     <?php endwhile;
                 else: ?>
@@ -143,7 +170,7 @@
             </section>
 
             <div class="see_more cen">
-                <button class="btn" onclick="location.href='./templates/'" aria-label="View All Templates">Explore All Business Templates</button>
+                <button class="btn" onclick="location.href='./en/templates/'" aria-label="View All Templates">Explore All Business Templates</button>
             </div>
 
             <section class="why-choose-us">
@@ -172,10 +199,71 @@
         <?php require_once "./components/footer.php";?>
     </div>
 
- 
-    <!-- <script src="./js/chatbot.js" defer></script> -->
+    <?php require_once "./components/chatbot.php"; ?>
+
+    <script src="./js/chatbot.js" defer></script>
     <script src="./js/script.js" ></script>
     <script src="./scripts/script.js" ></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    let typingTimer;
+    const doneTypingInterval = 300;
+
+    searchInput.addEventListener('input', function() {
+        clearTimeout(typingTimer);
+        if (searchInput.value) {
+            typingTimer = setTimeout(fetchResults, doneTypingInterval);
+        } else {
+            searchResults.innerHTML = '';
+            searchResults.style.display = 'none';
+        }
+    });
+
+    async function fetchResults() {
+        const searchTerm = searchInput.value;
+        try {
+            const response = await fetch(`./backend/search_templates.php?term=${encodeURIComponent(searchTerm)}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('Search results:', data); // Debug log
+            
+            if (data.length > 0) {
+                const resultsHtml = data.map(template => `
+                    <div class="search-result-item" onclick="location.href='./en/checkout?id=${template.id}'">
+                        <div class="result-name">${template.name}</div>
+                    </div>
+                `).join('');
+                
+                searchResults.innerHTML = resultsHtml;
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.innerHTML = '<div class="no-results">No templates found</div>';
+                searchResults.style.display = 'block';
+            }
+        } catch (error) {
+            console.error('Search error:', error); // Debug log
+            searchResults.innerHTML = '<div class="no-results">Error fetching results. Please try again.</div>';
+            searchResults.style.display = 'block';
+        }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-container')) {
+            searchResults.style.display = 'none';
+        }
+    });
+});
+
+    </script>
+ 
 </body>
 </html>
 <!-- Optimized for African businesses seeking professional web presence. Fast 3-day delivery, mobile-responsive templates, affordable pricing. Contact Divine The Developer for custom web solutions. -->

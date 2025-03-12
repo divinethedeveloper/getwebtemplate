@@ -76,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
 const wrap = document.querySelector('.wrap');
 const shots = document.querySelectorAll('.shot');
 const prevBtn = document.getElementById('prev');
@@ -146,5 +144,21 @@ prevBtn.addEventListener('click', () => {
   }
 });
 
+
+
 // Initial setup
 updateActiveShot(currentIndex);
+
+
+
+function toggleCartDropdown() {
+  const dropdown = document.getElementById('cart-dropdown');
+  dropdown.classList.toggle('show');
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+      if (!e.target.closest('.cart')) {
+          dropdown.classList.remove('show');
+      }
+  });
+}

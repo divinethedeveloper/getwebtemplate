@@ -1,5 +1,9 @@
 <div class="section4">
             <div class="partners">
+            <img src="./assets/associates/bot.png" alt="">
+            <img src="./assets/associates/lion.png" alt="">
+            <img src="./assets/associates/m.png" alt="">
+            <img src="./assets/associates/polaris.png" alt="">
 
             </div>
 
