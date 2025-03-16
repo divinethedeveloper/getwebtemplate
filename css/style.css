@@ -77,7 +77,6 @@
 
 .hero_text{
     position: absolute;
-    z-index: 140;
     color: #222;
     margin-top:  calc(5% + 5vh + 5rem);
     padding: 5vw;

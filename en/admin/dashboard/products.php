@@ -1,3 +1,12 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once 'backend/template_stats.php';
+require_once 'backend/utilities.php';
+
+$template_stats = getAllTemplateStats();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -299,7 +308,7 @@
             <div class="product-header">
                 <h2>Product Analytics</h2>
                 <div class="product-actions">
-                    <button class="action-button">
+                    <button class="action-button" onclick="toggleModal()">
                         <i class="bi bi-plus-lg"></i>
                         Add Template
                     </button>
@@ -313,50 +322,50 @@
             <div class="stats">
                 <div class="stat-card">
                     <h3>Total Templates</h3>
-                    <div class="value">48</div>
+                    <div class="value"><?php echo formatLargeNumber($template_stats['performance']['metrics']['total_templates']); ?></div>
                     <div class="trend up">
                         <i class="bi bi-arrow-up"></i>
-                        4 new this month
+                        Active Templates
                     </div>
                 </div>
 
                 <div class="stat-card">
                     <h3>Total Sales</h3>
-                    <div class="value">$24,892</div>
+                    <div class="value"><?php echo formatMoney($template_stats['performance']['metrics']['total_revenue']); ?></div>
                     <div class="trend up">
                         <i class="bi bi-arrow-up"></i>
-                        18.3% vs last month
+                        All Time Revenue
                     </div>
                 </div>
 
                 <div class="stat-card">
                     <h3>Conversion Rate</h3>
-                    <div class="value">3.8%</div>
-                    <div class="trend up">
-                        <i class="bi bi-arrow-up"></i>
-                        0.5% vs last month
+                    <div class="value"><?php echo number_format($template_stats['performance']['metrics']['conversion_rate'], 1); ?>%</div>
+                    <div class="trend <?php echo $template_stats['performance']['metrics']['conversion_rate'] > 3 ? 'up' : 'down'; ?>">
+                        <i class="bi bi-arrow-<?php echo $template_stats['performance']['metrics']['conversion_rate'] > 3 ? 'up' : 'down'; ?>"></i>
+                        Views to Sales
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <h3>Avg. Order Value</h3>
-                    <div class="value">$518</div>
+                    <h3>Avg. Template Price</h3>
+                    <div class="value"><?php echo formatMoney($template_stats['performance']['metrics']['avg_price']); ?></div>
                     <div class="trend up">
                         <i class="bi bi-arrow-up"></i>
-                        $48 vs last month
+                        Per Template
                     </div>
                 </div>
             </div>
 
             <div class="performance-grid">
                 <div class="chart-card">
-                    <h3>Sales Performance</h3>
-                    <canvas id="salesChart"></canvas>
+                    <h3>Category Performance</h3>
+                    <canvas id="categoryChart"></canvas>
                 </div>
 
                 <div class="chart-card">
-                    <h3>Category Distribution</h3>
-                    <canvas id="categoryChart"></canvas>
+                    <h3>Top Categories by Revenue</h3>
+                    <canvas id="revenueChart"></canvas>
                 </div>
             </div>
 
@@ -374,144 +383,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($template_stats['top_templates'] as $template): ?>
                         <tr>
                             <td>
                                 <div class="template-name">
-                                    <img src="../../../assets/templates/business-pro.jpg" alt=" ">
+                                    <img src="<?php echo htmlspecialchars($template['main_image']); ?>" alt="<?php echo htmlspecialchars($template['name']); ?>">
                                     <div>
-                                        Business Pro
-                                        <span class="badge trending">Trending</span>
+                                        <?php echo htmlspecialchars($template['name']); ?>
+                                        <?php if ($template['conversion_rate'] > 5): ?>
+                                            <span class="badge trending">Trending</span>
+                                        <?php endif; ?>
+                                        <?php if (strtotime($template['created_at']) > strtotime('-30 days')): ?>
+                                            <span class="badge new">New</span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </td>
-                            <td>Corporate</td>
-                            <td>2,847</td>
-                            <td>124</td>
-                            <td>$64,480</td>
-                            <td>4.4%</td>
+                            <td><?php echo ucfirst(htmlspecialchars($template['category'])); ?></td>
+                            <td><?php echo formatLargeNumber($template['views']); ?></td>
+                            <td><?php echo formatLargeNumber($template['times_purchased']); ?></td>
+                            <td><?php echo formatMoney($template['revenue']); ?></td>
+                            <td><?php echo number_format($template['conversion_rate'], 1); ?>%</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/ecommerce-plus.jpg" alt=" ">
-                                    <div>
-                                        E-commerce Plus
-                                        <span class="badge new">New</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>E-commerce</td>
-                            <td>2,123</td>
-                            <td>98</td>
-                            <td>$52,920</td>
-                            <td>4.6%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="template-name">
-                                    <img src="../../../assets/templates/portfolio-premium.jpg" alt=" ">
-                                    <div>
-                                        Portfolio Premium
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Portfolio</td>
-                            <td>1,908</td>
-                            <td>86</td>
-                            <td>$41,280</td>
-                            <td>4.5%</td>
-                        </tr>
-                        
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -596,17 +490,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Sales Performance Chart
-            const salesCtx = document.getElementById('salesChart').getContext('2d');
-            new Chart(salesCtx, {
-                type: 'line',
+            // Prepare category data
+            const categories = <?php echo json_encode($template_stats['categories']); ?>;
+            
+            // Category Performance Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(categoryCtx, {
+                type: 'bar',
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    labels: categories.map(cat => cat.category),
                     datasets: [{
-                        label: 'Sales',
-                        data: [18500, 22400, 19800, 24200, 23100, 24892],
-                        borderColor: '#2563eb',
-                        tension: 0.4
+                        label: 'Templates',
+                        data: categories.map(cat => cat.template_count),
+                        backgroundColor: '#2563eb'
                     }]
                 },
                 options: {
@@ -618,26 +514,25 @@
                     },
                     scales: {
                         y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return '$' + value.toLocaleString();
-                                }
-                            }
+                            beginAtZero: true
                         }
                     }
                 }
             });
 
-            // Category Distribution Chart
-            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
-            new Chart(categoryCtx, {
+            // Revenue by Category Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Corporate', 'E-commerce', 'Portfolio', 'Blog', 'Others'],
+                    labels: categories.map(cat => cat.category),
                     datasets: [{
-                        data: [35, 25, 20, 15, 5],
-                        backgroundColor: ['#2563eb', '#16a34a', '#ca8a04', '#dc2626', '#64748b']
+                        data: categories.map(cat => cat.total_sales),
+                        backgroundColor: [
+                            '#2563eb', '#16a34a', '#ca8a04', 
+                            '#dc2626', '#64748b', '#9333ea',
+                            '#0891b2', '#be185d', '#854d0e'
+                        ]
                     }]
                 },
                 options: {

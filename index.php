@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+require_once 'backend/track_visitor.php';
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -72,11 +77,14 @@
 <body>
     <div class="container">
         
+
+
+        <!-- Navigation -->
         <nav class="nav" aria-label="Main navigation">
-            <div class="search cen">
+        <div class="search cen">
                 <div class="search-container">
                     <input id="search-input" type="text" placeholder="Search templates..." aria-label="Search templates">
-                    <button class="button cen" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                    <button id="search-toggle" class="button cen" aria-label="Toggle search"><i class="bi bi-search"></i></button>
                     
                     <div class="search-dropdown" id="search-results">
                         <!-- Results will be populated here -->
@@ -103,7 +111,7 @@
         <main>
             <section class="new_hero">
                 <div class="f_image">
-                    <img src="./assets/divinethedeveloper_hero_2.png" alt="Ready-Made Professional Business Websites" loading="lazy">
+                    <img src="./assets/divinethedeveloper_hero_2.png" alt="Ready-Made Professional Business Websites" >
                 </div>
                 <div class="t_left"></div>
                 <div class="b_left"></div>
@@ -121,7 +129,7 @@
             </section>
 
             <section class="mockup">
-                <img src="./assets/iPhone-App-Screen-Mockups.png" alt="Mobile-Friendly Business Websites" loading="lazy">
+                <img src="./assets/iPhone-App-Screen-Mockups.png" alt="Mobile-Friendly Business Websites" >
                 <div class="sec">
                     <h2>Your Website, <span>Our Experts</span></h2>
                     <ul class="features-list" style="list-style: none; margin: 20px 0;">
@@ -154,10 +162,10 @@
                     while ($row = $result->fetch_assoc()): ?>
                         <article class="template" onclick="location.href='./en/checkout/?id=<?= $row['id'] ?>'" role="button" tabindex="0">
                             <div class="gif">
-                                <img src="./assets/gif.gif" alt="Loading animation" loading="lazy">
+                                <img src="./assets/gif.gif" alt="Loading animation" >
                             </div>
                             <div class="t_scroll">
-                                <img src="./backend/<?= htmlspecialchars($row['main_image']) ?>" alt="Preview of <?= htmlspecialchars($row['name']) ?> template" loading="lazy">
+                                <img src="./backend/<?= htmlspecialchars($row['main_image']) ?>" alt="Preview of <?= htmlspecialchars($row['name']) ?> template" >
                             </div>
                             <h3 class="article_name"><?= htmlspecialchars($row['name']) ?></h3>
                         </article>
@@ -206,62 +214,154 @@
     <script src="./scripts/script.js" ></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
+        // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Search functionality
+    const searchToggle = document.getElementById('search-toggle');
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
+    const wrap = document.querySelector('.wrap');
+
+    // Initialize variables for search functionality
     let typingTimer;
     const doneTypingInterval = 300;
 
-    searchInput.addEventListener('input', function() {
-        clearTimeout(typingTimer);
-        if (searchInput.value) {
-            typingTimer = setTimeout(fetchResults, doneTypingInterval);
-        } else {
-            searchResults.innerHTML = '';
-            searchResults.style.display = 'none';
-        }
-    });
+    // Only initialize search functionality if elements exist
+    if (searchToggle && searchInput && searchResults) {
+        // Toggle search input on mobile
+        searchToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent event bubbling
+            if (window.innerWidth <= 769) {
+                searchInput.classList.toggle('active');
+                if (searchInput.classList.contains('active')) {
+                    setTimeout(() => {
+                        searchInput.focus();
+                    }, 100);
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            }
+        });
 
-    async function fetchResults() {
-        const searchTerm = searchInput.value;
-        try {
-            const response = await fetch(`./backend/search_templates.php?term=${encodeURIComponent(searchTerm)}`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            console.log('Search results:', data); // Debug log
-            
-            if (data.length > 0) {
-                const resultsHtml = data.map(template => `
-                    <div class="search-result-item" onclick="location.href='./en/checkout?id=${template.id}'">
-                        <div class="result-name">${template.name}</div>
-                    </div>
-                `).join('');
-                
-                searchResults.innerHTML = resultsHtml;
-                searchResults.style.display = 'block';
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            clearTimeout(typingTimer);
+            if (searchInput.value) {
+                typingTimer = setTimeout(fetchResults, doneTypingInterval);
             } else {
-                searchResults.innerHTML = '<div class="no-results">No templates found</div>';
-                searchResults.style.display = 'block';
+                searchResults.innerHTML = '';
+                searchResults.style.display = 'none';
             }
-        } catch (error) {
-            console.error('Search error:', error); // Debug log
-            searchResults.innerHTML = '<div class="no-results">Error fetching results. Please try again.</div>';
-            searchResults.style.display = 'block';
-        }
+        });
+
+        // Close search input and results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 769 && 
+                !e.target.closest('.search-container')) {
+                searchInput.classList.remove('active');
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Prevent search container clicks from closing
+        searchInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
     }
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-container')) {
-            searchResults.style.display = 'none';
+    // Mobile menu toggle functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            if (wrap) {
+                wrap.style.marginLeft = mobileMenu.classList.contains('active') ? '250px' : '0';
+            }
+        });
+    }
+
+    // Toggle items functionality
+    function toggle_items() {
+        const toggleButtons = document.querySelectorAll('[data-toggle]');
+        
+        toggleButtons.forEach(button => {
+            if (button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-toggle');
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.classList.toggle('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Initialize toggle functionality
+    toggle_items();
+
+    // Window resize handler
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 769) {
+            if (searchInput) {
+                searchInput.classList.remove('active');
+                if (!searchInput.value && searchResults) {
+                    searchResults.style.display = 'none';
+                }
+            }
+            if (wrap && mobileMenu) {
+                wrap.style.marginLeft = '0';
+                mobileMenu.classList.remove('active');
+            }
         }
     });
 });
 
+// Search results fetching function
+async function fetchResults() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    if (!searchInput || !searchResults) return;
+
+    const searchTerm = searchInput.value;
+    try {
+        const response = await fetch(`./backend/search_templates.php?term=${encodeURIComponent(searchTerm)}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.length > 0) {
+            const resultsHtml = data.map(template => `
+                <div class="search-result-item" onclick="location.href='./en/checkout/?id=${template.id}'">
+                    <div class="result-name">${template.name}</div>
+                </div>
+            `).join('');
+            
+            searchResults.innerHTML = resultsHtml;
+            searchResults.style.display = 'block';
+        } else {
+            searchResults.innerHTML = '<div class="no-results">No templates found</div>';
+            searchResults.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Search error:', error);
+        searchResults.innerHTML = '<div class="no-results">Error fetching results. Please try again.</div>';
+        searchResults.style.display = 'block';
+    }
+}
+       
+   
+     
     </script>
  
 </body>

@@ -1,3 +1,14 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ 
+require_once 'backend/visitor_stats.php';
+require_once 'backend/template_stats.php';
+require_once 'backend/utilities.php';
+
+$visitor_stats = getVisitorStatistics();
+$template_stats = getOverviewStats();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,43 +210,54 @@
         <div class="info">
             <div class="live-visitors">
                 <div class="pulse"></div>
-                <strong>42 people</strong> are currently browsing the website
+                <strong><?php echo isset($visitor_stats['current_visitors']) ? formatLargeNumber($visitor_stats['current_visitors']) : '0'; ?> people</strong> are currently browsing the website
             </div>
 
             <div class="stats">
                 <div class="stat-card">
-                    <h3>Total Site Visits</h3>
-                    <div class="value">15,842</div>
+                    <h3>Total Templates</h3>
+                    <div class="value"><?php echo formatLargeNumber($template_stats['performance']['metrics']['total_templates']); ?></div>
                     <div class="trend up">
                         <i class="bi bi-arrow-up"></i>
-                        12.5% vs last week
+                        Total Active Templates
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <h3>Today's Visitors</h3>
-                    <div class="value">1,247</div>
+                    <h3>Total Revenue</h3>
+                    <div class="value"><?php echo formatMoney($template_stats['performance']['metrics']['total_revenue']); ?></div>
                     <div class="trend up">
                         <i class="bi bi-arrow-up"></i>
-                        8.3% vs yesterday
+                        From All Sales
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <h3>Newsletter Signups</h3>
-                    <div class="value">326</div>
+                    <h3>Total Views</h3>
+                    <div class="value"><?php echo formatLargeNumber($template_stats['performance']['metrics']['total_views']); ?></div>
                     <div class="trend up">
                         <i class="bi bi-arrow-up"></i>
-                        5.2% conversion rate
+                        Across All Templates
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <h3>Avg. Session Duration</h3>
-                    <div class="value">4:32</div>
+                    <h3>Conversion Rate</h3>
+                    <div class="value"><?php echo number_format($template_stats['performance']['metrics']['conversion_rate'], 1); ?>%</div>
+                    <div class="trend <?php echo $template_stats['performance']['metrics']['conversion_rate'] > 3 ? 'up' : 'down'; ?>">
+                        <i class="bi bi-arrow-<?php echo $template_stats['performance']['metrics']['conversion_rate'] > 3 ? 'up' : 'down'; ?>"></i>
+                        Views to Sales
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Current Visitors</h3>
+                    <div class="value">
+                        <?php echo isset($visitor_stats['current_visitors']) ? formatLargeNumber($visitor_stats['current_visitors']) : '0'; ?>
+                    </div>
                     <div class="trend up">
-                        <i class="bi bi-arrow-up"></i>
-                        +45s vs last week
+                        <i class="bi bi-people"></i>
+                        people are currently browsing the website
                     </div>
                 </div>
             </div>
@@ -244,72 +266,48 @@
                 <div class="chart-card">
                     <h3>Most Viewed Templates</h3>
                     <div class="chart-content">
+                        <?php foreach ($template_stats['most_viewed'] as $template): ?>
                         <div class="stat-item">
-                            <span>Business Pro Template</span>
-                            <strong>2,847 views</strong>
+                            <span><?php echo htmlspecialchars($template['name']); ?></span>
+                            <strong><?php echo formatLargeNumber($template['views']); ?> views</strong>
                         </div>
-                        <div class="stat-item">
-                            <span>E-commerce Plus</span>
-                            <strong>2,123 views</strong>
-                        </div>
-                        <div class="stat-item">
-                            <span>Portfolio Premium</span>
-                            <strong>1,908 views</strong>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3>Conversion Metrics</h3>
+                    <h3>Top Performing Templates</h3>
                     <div class="chart-content">
+                        <?php foreach ($template_stats['performance']['top_performers'] as $template): ?>
                         <div class="stat-item">
-                            <span>Click-through Rate</span>
-                            <strong>24.8%</strong>
+                            <span><?php echo htmlspecialchars($template['name']); ?></span>
+                            <strong><?php echo $template['times_purchased']; ?> sales</strong>
                         </div>
-                        <div class="stat-item">
-                            <span>Add to Cart Rate</span>
-                            <strong>12.3%</strong>
-                        </div>
-                        <div class="stat-item">
-                            <span>Purchase Rate</span>
-                            <strong>3.7%</strong>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3>Traffic Sources</h3>
+                    <h3>Category Distribution</h3>
                     <div class="chart-content">
+                        <?php foreach ($template_stats['recent_sales']['categories'] as $category): ?>
                         <div class="stat-item">
-                            <span>Organic Search</span>
-                            <strong>45%</strong>
+                            <span><?php echo ucfirst(htmlspecialchars($category['category'])); ?></span>
+                            <strong><?php echo $category['count']; ?> templates</strong>
                         </div>
-                        <div class="stat-item">
-                            <span>Direct</span>
-                            <strong>30%</strong>
-                        </div>
-                        <div class="stat-item">
-                            <span>Social Media</span>
-                            <strong>25%</strong>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3>User Engagement</h3>
+                    <h3>Revenue by Category</h3>
                     <div class="chart-content">
+                        <?php foreach ($template_stats['recent_sales']['categories'] as $category): ?>
                         <div class="stat-item">
-                            <span>Pages per Session</span>
-                            <strong>4.2</strong>
+                            <span><?php echo ucfirst(htmlspecialchars($category['category'])); ?></span>
+                            <strong><?php echo formatMoney($category['revenue']); ?></strong>
                         </div>
-                        <div class="stat-item">
-                            <span>Bounce Rate</span>
-                            <strong>32%</strong>
-                        </div>
-                        <div class="stat-item">
-                            <span>Return Rate</span>
-                            <strong>28%</strong>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

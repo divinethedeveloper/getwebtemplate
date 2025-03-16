@@ -8,20 +8,6 @@ class Chatbot {
         this.sendBtn = document.getElementById('chatbot-send');
         this.responses = null;
 
-        // Add observer for gif removal
-        this.observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const gifElement = entry.target.querySelector('.gif');
-                    if (gifElement) {
-                        setTimeout(() => {
-                            gifElement.classList.add('active');
-                        }, 1000);
-                    }
-                }
-            });
-        });
-
         this.init();
     }
 
@@ -42,8 +28,6 @@ class Chatbot {
             if (this.responses && this.responses.greeting) {
                 this.sendBotMessage(this.getRandomResponse('greeting'));
             }
-
-            this.initializeGifRemoval();
         } catch (error) {
             console.error('Error loading chatbot responses:', error);
             // Set some default responses in case JSON fails to load
@@ -57,24 +41,6 @@ class Chatbot {
             };
             this.setupEventListeners();
             this.sendBotMessage(this.getRandomResponse('greeting'));
-        }
-    }
-
-    initializeGifRemoval() {
-        // Observe all elements with gifs
-        document.querySelectorAll('.gif').forEach(gif => {
-            this.observer.observe(gif.parentElement);
-        });
-    }
-
-    remove_gif(element) {
-        if (element) {
-            const gifElement = element.querySelector('.gif');
-            if (gifElement) {
-                setTimeout(() => {
-                    gifElement.classList.add('active');
-                }, 1000);
-            }
         }
     }
 
@@ -162,14 +128,6 @@ class Chatbot {
         messageDiv.classList.add('message', `${sender}-message`);
         messageDiv.textContent = message;
         
-        // If there's an image or gif, handle its removal
-        const gifElements = messageDiv.querySelectorAll('.gif');
-        if (gifElements.length > 0) {
-            gifElements.forEach(gif => {
-                this.observer.observe(gif.parentElement);
-            });
-        }
-        
         this.messages.appendChild(messageDiv);
         this.messages.scrollTop = this.messages.scrollHeight;
     }
@@ -177,10 +135,5 @@ class Chatbot {
 
 // Initialize chatbot when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const chatbot = new Chatbot();
-    
-    // Add global function for removing gifs
-    window.remove_gif = function(element) {
-        chatbot.remove_gif(element);
-    };
+    new Chatbot();
 }); 

@@ -1,3 +1,13 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once 'backend/visitor_stats.php';
+require_once 'backend/utilities.php';
+
+$days = isset($_GET['days']) ? (int)$_GET['days'] : 30;
+$visitor_stats = getVisitorStatistics($days);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,40 +174,49 @@
             <div class="visitor-header">
                 <h2>Visitor Analytics</h2>
                 <div class="date-filter">
-                    <select>
-                        <option>Last 7 days</option>
-                        <option>Last 30 days</option>
-                        <option>Last 3 months</option>
-                        <option>Last year</option>
+                    <select id="timeRange" onchange="updateStats(this.value)">
+                        <option value="7" <?php echo $days == 7 ? 'selected' : ''; ?>>Last 7 days</option>
+                        <option value="30" <?php echo $days == 30 ? 'selected' : ''; ?>>Last 30 days</option>
+                        <option value="90" <?php echo $days == 90 ? 'selected' : ''; ?>>Last 3 months</option>
+                        <option value="365" <?php echo $days == 365 ? 'selected' : ''; ?>>Last year</option>
                     </select>
                 </div>
             </div>
 
-            <div class="visitor-grid">
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Total Visits</h3>
+                    <div class="value"><?php echo formatLargeNumber($visitor_stats['today_visits'] ?? 0); ?></div>
+                    <div class="trend <?php echo ($visitor_stats['visit_change'] ?? 0) > 0 ? 'up' : 'down'; ?>">
+                        <i class="bi bi-arrow-<?php echo ($visitor_stats['visit_change'] ?? 0) > 0 ? 'up' : 'down'; ?>"></i>
+                        <?php echo abs($visitor_stats['visit_change'] ?? 0); ?>% from yesterday
+                    </div>
+                </div>
+
                 <div class="stat-card">
                     <h3>Unique Visitors</h3>
-                    <div class="value">8,492</div>
-                    <div class="trend up">
-                        <i class="bi bi-arrow-up"></i>
-                        15.3% vs last period
+                    <div class="value"><?php echo formatLargeNumber($visitor_stats['today_unique'] ?? 0); ?></div>
+                    <div class="trend <?php echo ($visitor_stats['unique_change'] ?? 0) > 0 ? 'up' : 'down'; ?>">
+                        <i class="bi bi-arrow-<?php echo ($visitor_stats['unique_change'] ?? 0) > 0 ? 'up' : 'down'; ?>"></i>
+                        <?php echo abs($visitor_stats['unique_change'] ?? 0); ?>% from yesterday
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <h3>Average Time on Site</h3>
-                    <div class="value">6:18</div>
+                    <h3>Page Views</h3>
+                    <div class="value"><?php echo formatLargeNumber($visitor_stats['page_views'] ?? 0); ?></div>
                     <div class="trend up">
-                        <i class="bi bi-arrow-up"></i>
-                        +1:24 vs last period
+                        <i class="bi bi-eye"></i>
+                        Total views today
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <h3>Return Visitors</h3>
-                    <div class="value">42%</div>
-                    <div class="trend up">
-                        <i class="bi bi-arrow-up"></i>
-                        5.7% vs last period
+                    <h3>Bounce Rate</h3>
+                    <div class="value"><?php echo number_format($visitor_stats['bounce_rate'] ?? 0, 1); ?>%</div>
+                    <div class="trend <?php echo ($visitor_stats['bounce_rate'] ?? 0) < 50 ? 'up' : 'down'; ?>">
+                        <i class="bi bi-arrow-<?php echo ($visitor_stats['bounce_rate'] ?? 0) < 50 ? 'up' : 'down'; ?>"></i>
+                        Single page visits
                     </div>
                 </div>
             </div>
@@ -214,15 +233,15 @@
                     <div class="chart-content">
                         <div class="stat-item">
                             <span><i class="bi bi-phone device-icon"></i>Mobile</span>
-                            <strong>58%</strong>
+                            <strong><?php echo isset($visitor_stats['device_stats']['mobile']) ? $visitor_stats['device_stats']['mobile'] : 0; ?>%</strong>
                         </div>
                         <div class="stat-item">
                             <span><i class="bi bi-laptop device-icon"></i>Desktop</span>
-                            <strong>34%</strong>
+                            <strong><?php echo isset($visitor_stats['device_stats']['desktop']) ? $visitor_stats['device_stats']['desktop'] : 0; ?>%</strong>
                         </div>
                         <div class="stat-item">
                             <span><i class="bi bi-tablet device-icon"></i>Tablet</span>
-                            <strong>8%</strong>
+                            <strong><?php echo isset($visitor_stats['device_stats']['tablet']) ? $visitor_stats['device_stats']['tablet'] : 0; ?>%</strong>
                         </div>
                     </div>
                 </div>
@@ -233,15 +252,15 @@
                     <div class="chart-content">
                         <div class="stat-item">
                             <span>Chrome</span>
-                            <strong>64%</strong>
+                            <strong><?php echo isset($visitor_stats['browser_stats']['chrome']) ? $visitor_stats['browser_stats']['chrome'] : 0; ?>%</strong>
                         </div>
                         <div class="stat-item">
                             <span>Safari</span>
-                            <strong>22%</strong>
+                            <strong><?php echo isset($visitor_stats['browser_stats']['safari']) ? $visitor_stats['browser_stats']['safari'] : 0; ?>%</strong>
                         </div>
                         <div class="stat-item">
                             <span>Firefox</span>
-                            <strong>14%</strong>
+                            <strong><?php echo isset($visitor_stats['browser_stats']['firefox']) ? $visitor_stats['browser_stats']['firefox'] : 0; ?>%</strong>
                         </div>
                     </div>
                 </div>
@@ -260,34 +279,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><span class="location-badge"><i class="bi bi-geo-alt"></i> Lagos, Nigeria</span></td>
-                            <td><i class="bi bi-phone device-icon"></i>iPhone 13</td>
-                            <td>Safari</td>
-                            <td>5:42</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td><span class="location-badge"><i class="bi bi-geo-alt"></i> Nairobi, Kenya</span></td>
-                            <td><i class="bi bi-laptop device-icon"></i>Windows PC</td>
-                            <td>Chrome</td>
-                            <td>8:15</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td><span class="location-badge"><i class="bi bi-geo-alt"></i> Accra, Ghana</span></td>
-                            <td><i class="bi bi-phone device-icon"></i>Samsung S21</td>
-                            <td>Chrome</td>
-                            <td>3:28</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td><span class="location-badge"><i class="bi bi-geo-alt"></i> Cape Town, SA</span></td>
-                            <td><i class="bi bi-tablet device-icon"></i>iPad Pro</td>
-                            <td>Safari</td>
-                            <td>6:53</td>
-                            <td>9</td>
-                        </tr>
+                        <?php if (isset($visitor_stats['recent_visitors']) && is_array($visitor_stats['recent_visitors'])): ?>
+                            <?php foreach ($visitor_stats['recent_visitors'] as $visitor): ?>
+                            <tr>
+                                <td><span class="location-badge"><i class="bi bi-geo-alt"></i> <?php echo htmlspecialchars($visitor['location'] ?? 'Unknown'); ?></span></td>
+                                <td><i class="bi bi-<?php echo ($visitor['device'] ?? '') == 'Mobile' ? 'phone' : (($visitor['device'] ?? '') == 'Tablet' ? 'tablet' : 'laptop'); ?> device-icon"></i><?php echo htmlspecialchars($visitor['device'] ?? 'Unknown'); ?></td>
+                                <td><?php echo htmlspecialchars($visitor['browser'] ?? 'Unknown'); ?></td>
+                                <td><?php echo formatDuration($visitor['time_on_site'] ?? 0); ?></td>
+                                <td><?php echo $visitor['pages_viewed'] ?? 0; ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5" style="text-align: center;">No recent visitors</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -304,7 +310,11 @@
                 data: {
                     labels: ['Mobile', 'Desktop', 'Tablet'],
                     datasets: [{
-                        data: [58, 34, 8],
+                        data: [
+                            <?php echo isset($visitor_stats['device_stats']['mobile']) ? $visitor_stats['device_stats']['mobile'] : 0; ?>,
+                            <?php echo isset($visitor_stats['device_stats']['desktop']) ? $visitor_stats['device_stats']['desktop'] : 0; ?>,
+                            <?php echo isset($visitor_stats['device_stats']['tablet']) ? $visitor_stats['device_stats']['tablet'] : 0; ?>
+                        ],
                         backgroundColor: ['#2563eb', '#16a34a', '#ca8a04']
                     }]
                 },
@@ -325,7 +335,11 @@
                 data: {
                     labels: ['Chrome', 'Safari', 'Firefox'],
                     datasets: [{
-                        data: [64, 22, 14],
+                        data: [
+                            <?php echo isset($visitor_stats['browser_stats']['chrome']) ? $visitor_stats['browser_stats']['chrome'] : 0; ?>,
+                            <?php echo isset($visitor_stats['browser_stats']['safari']) ? $visitor_stats['browser_stats']['safari'] : 0; ?>,
+                            <?php echo isset($visitor_stats['browser_stats']['firefox']) ? $visitor_stats['browser_stats']['firefox'] : 0; ?>
+                        ],
                         backgroundColor: ['#2563eb', '#16a34a', '#ca8a04']
                     }]
                 },
@@ -339,6 +353,10 @@
                 }
             });
         });
+
+        function updateStats(days) {
+            window.location.href = 'visitors.php?days=' + days;
+        }
     </script>
 </body>
 </html> 
