@@ -44,13 +44,16 @@
             "Our prices are designed to be budget-friendly while delivering premium quality. Would you like to explore our pricing options?"
         ]
     },
-    "timeline": {
-        "keywords": ["time", "long", "duration", "when", "fast", "quick", "days", "delivery"],
-        "responses": [
-            "We can get your business website live within 3 days! Would you like to know how our quick deployment process works?",
-            "Our streamlined process ensures your website goes live in just 3 days. Ready to start your project?",
-            "From selection to launch - just 3 days! Would you like to see how we make it happen?"
-        ]
+   "timeline": {
+    "keywords": ["time", "long", "duration", "when", "fast", "quick", "days", "delivery"],
+    "responses": [
+        "Get your website online instantly! Once you purchase a template, your site will be live within 3-6 hours. We’ll then refine and customize it based on your inputs over the next few days.",
+        "Your business website goes live in just a few hours! After purchasing a template, you can access it within 3-6 hours, and we'll fine-tune it to match your brand in the following days.",
+        "Launch your website in record time! After purchasing a template, it will be live in 3-6 hours, ready for you to explore while we perfect the final touches.",
+        "No delays, no waiting! Your website becomes accessible within 3-6 hours of purchasing a template, with customization adjustments made in the next few days.",
+        "Your online presence starts instantly! Buy a template, and within 3-6 hours, your website will be live, with refinements handled shortly after.",
+        "Seamless and instant deployment! Once you choose a template, your website is up within 3-6 hours, with our team fine-tuning it to your preferences over the next few days."
+    ]
     },
     "templates": {
         "keywords": ["template", "design", "theme", "layout", "look", "style", "examples"],
@@ -107,5 +110,825 @@
             "I might need more information to assist you properly. What specific aspect of our website services interests you?",
             "Let me connect you with our team for more detailed information about that. Would you like their contact details?"
         ]
+    },
+    "domains": {
+        "keywords": ["domain", "website address", "URL", "register domain", "buy domain"],
+        "responses": [
+            "Our system handles and manages your domain registration, ensuring a seamless setup without requiring you to purchase a domain separately. If you already have a domain, we will link it to your website, allowing you to maintain your existing online presence without needing an additional purchase."
+        ]
+    },
+    "refunds": {
+        "keywords": ["refund", "money back", "return policy", "cancel", "guarantee"],
+        "responses": [
+            "We offer a 30-day refund policy for all our services. If you are not satisfied with your website within the first 30 days, you can request a full refund, no questions asked. Our goal is to ensure that you are completely satisfied with our platform."
+        ]
+    },
+    "hosting": {
+        "keywords": ["hosting", "server", "uptime", "storage", "bandwidth"],
+        "responses": [
+            "We host your website on our secure, high-performance servers with 24/7 monitoring and support. Our hosting service ensures fast loading speeds, unlimited bandwidth, and guaranteed uptime to keep your website accessible at all times."
+        ]
+    },
+    "security": {
+        "keywords": ["security", "SSL", "protection", "encryption", "firewall", "hackers"],
+        "responses": [
+            "Security is our top priority. All websites come with free SSL certificates for encrypted data transmission. Our servers implement industry-standard security protocols, including firewalls, malware scanning, and DDoS protection, to ensure your website remains secure at all times."
+        ]
+    },
+    "maintenance": {
+        "keywords": ["maintenance", "update", "support", "technical assistance"],
+        "responses": [
+            "We provide continuous maintenance to ensure your website runs smoothly. This includes software updates, bug fixes, performance optimizations, and security patches. Our team is always on hand to address any issues, allowing you to focus on growing your business."
+        ]
+    },
+    "mobile_friendly": {
+        "keywords": ["responsive", "mobile-friendly", "tablet", "device compatibility"],
+        "responses": [
+            "All our websites are fully responsive, ensuring an optimal viewing experience across all devices, including mobile phones, tablets, and desktops. Your website will automatically adjust to different screen sizes for a seamless browsing experience."
+        ]
+    },
+    "integrations": {
+        "keywords": ["integration", "API", "third-party tools", "payment gateway", "automation"],
+        "responses": [
+            "If your website requires a payment gateway, you can choose from trusted providers like Stripe, Paystack, or PayPal for seamless transactions. Additionally, our platform supports integrations with CRM systems, analytics tools, and marketing platforms to enhance your business operations."
+        ]
+    },
+    "testimonials": {
+        "keywords": ["testimonials", "reviews", "feedback", "success stories"],
+        "responses": [
+            "We take pride in our satisfied customers. Read real testimonials from business owners who have successfully launched and grown their websites with us. Want to hear their experiences? Visit our testimonials page for success stories."
+        ]
+    },
+    "portfolio": {
+        "keywords": ["portfolio", "examples", "past work", "clients"],
+        "responses": [
+            "Explore our portfolio to see real businesses that have built their websites with us. We showcase a diverse range of industries, from e-commerce stores to professional service websites. Need inspiration? Let us show you what's possible!"
+        ]
+    },
+    "partnerships": {
+        "keywords": ["partnerships", "affiliates", "collaboration", "business opportunities"],
+        "responses": [
+            "We collaborate with businesses and individuals looking to resell our services or integrate our platform into their business model. If you're interested in a partnership or affiliate program, let's discuss how we can work together for mutual growth."
+        ]
+    },
+    "discounts": {
+        "keywords": ["discount", "offer", "promotion", "sale"],
+        "responses": [
+            "At the moment, we are not offering any discounts. However, we ensure our pricing remains competitive, offering high value for the services provided. Stay tuned for any future promotional offers."
+        ]
+    },
+    "training": {
+        "keywords": ["training", "learn", "tutorial", "how-to", "guide"],
+        "responses": [
+            "We provide a step-by-step guide within your admin dashboard, where you can learn how to customize and manage your website effortlessly. Our platform is designed to be user-friendly, but if you ever need assistance, our support team is ready to help."
+        ]
+    },
+    "analytics": {
+        "keywords": ["analytics", "insights", "traffic", "reports", "dashboard"],
+        "responses": [
+            "Your website includes a built-in analytics dashboard where you can track visitor activity, engagement metrics, and traffic sources. Gain valuable insights to optimize your content and improve your online presence."
+        ]
+    },
+    "legal": {
+        "keywords": ["legal", "terms", "privacy policy", "GDPR", "compliance"],
+        "responses": [
+            "We comply with all legal and regulatory requirements to ensure the security and privacy of our users. Our terms of service outline your rights and responsibilities, while our privacy policy ensures that your data is protected. We also follow GDPR and other data protection regulations to safeguard your information."
+        ]
+    },
+    "performance": {
+        "keywords": ["speed", "fast", "slow", "loading time", "optimize"],
+        "responses": [
+            "Our websites are optimized for high performance, ensuring fast loading speeds through advanced caching and a global content delivery network (CDN).",
+            "We continuously monitor and optimize performance to guarantee a smooth and efficient user experience, regardless of traffic spikes."
+        ]
+    },
+    "scalability": {
+        "keywords": ["scale", "expand", "growth", "big website", "enterprise"],
+        "responses": [
+            "Our platform is designed to grow with your business, allowing seamless upgrades to support higher traffic and additional functionalities.",
+            "Whether you start small or require enterprise-level infrastructure, we offer flexible solutions to scale your website as your business expands."
+        ]
+    },
+    "backup": {
+        "keywords": ["backup", "restore", "data loss", "recovery"],
+        "responses": [
+            "We provide automated daily backups, ensuring your website data is always safe and can be restored at any time.",
+            "In case of accidental data loss, our backup system allows you to restore your site to a previous version within minutes."
+        ]
+    },
+    "compliance": {
+        "keywords": ["legal", "law", "regulation", "policy", "GDPR", "terms"],
+        "responses": [
+            "Our platform adheres to all relevant data protection regulations, including GDPR, ensuring your website operates in compliance with legal standards.",
+            "We provide clear terms of service and privacy policies to protect both your business and your customers, ensuring full transparency."
+        ]
+    },
+    "customer_support": {
+        "keywords": ["support", "help", "assistance", "customer service", "contact"],
+        "responses": [
+            "Our support team is available 24/7 to assist with any issues or questions you may have.",
+            "You can reach our expert support team via live chat, email, or phone for prompt assistance with your website."
+        ]
+    },
+    "user_management": {
+        "keywords": ["users", "roles", "permissions", "access control", "accounts"],
+        "responses": [
+            "Our system allows you to manage user roles and permissions, ensuring secure access control for different team members.",
+            "You can create multiple user accounts with customized access levels to manage your website efficiently."
+        ]
+    },
+    "third_party_integrations": {
+        "keywords": ["integration", "API", "third-party", "connect", "external tools"],
+        "responses": [
+            "Easily integrate with third-party tools and services, including email marketing platforms, CRM systems, and analytics tools.",
+            "Our platform supports API access, allowing seamless integration with various business applications for enhanced functionality."
+        ]
+    },
+    "branding": {
+        "keywords": ["brand", "identity", "logo", "customization", "personalization"],
+        "responses": [
+            "We offer full branding customization, allowing you to incorporate your logo, colors, and style across your website.",
+            "Your website reflects your brand identity, with options to tailor fonts, layouts, and design elements to match your vision."
+        ]
+    },
+    "analytics": {
+        "keywords": ["tracking", "stats", "data", "metrics", "insights"],
+        "responses": [
+            "Gain valuable insights with built-in analytics that track visitor behavior, traffic sources, and engagement metrics.",
+            "Our dashboard provides real-time data to help you make informed business decisions and optimize your website’s performance."
+        ]
+    },
+    "automation": {
+        "keywords": ["automate", "schedule", "workflow", "efficiency"],
+        "responses": [
+            "Our system supports automation features, allowing you to schedule posts, send automated emails, and manage tasks effortlessly.",
+            "Increase productivity with workflow automation tools that reduce manual effort and enhance operational efficiency."
+        ]
+    },
+    "mobile_optimization": {
+        "keywords": ["mobile", "responsive", "tablet", "smartphone"],
+        "responses": [
+            "All our websites are fully responsive, ensuring a seamless experience across mobile, tablet, and desktop devices.",
+            "We prioritize mobile optimization, making sure your website adapts to different screen sizes for optimal usability."
+        ]
+    },
+    "content_management": {
+        "keywords": ["CMS", "content", "edit", "blog", "update"],
+        "responses": [
+            "Easily manage and update your website content using our intuitive content management system (CMS).",
+            "Our CMS allows you to create and edit pages, publish blog posts, and organize media effortlessly."
+        ]
+    },
+    "security": {
+        "keywords": ["secure", "SSL", "encryption", "firewall", "protection"],
+        "responses": [
+            "We prioritize security with SSL encryption, data protection, and advanced firewalls to keep your website safe.",
+            "Our security measures include automatic malware scanning and proactive threat detection to protect your website from attacks."
+        ]
+    },
+    "pricing_models": {
+        "keywords": ["subscription", "one-time payment", "monthly", "yearly"],
+        "responses": [
+            "We offer flexible pricing models, including monthly subscriptions and one-time payment options to suit your needs.",
+            "Choose a pricing plan that works best for you, whether it’s a pay-as-you-go model or an annual subscription with added benefits."
+        ]
+    },
+    "updates": {
+        "keywords": ["upgrade", "new features", "improvements", "patches"],
+        "responses": [
+            "We regularly roll out updates to improve performance, security, and add new features to enhance your experience.",
+            "Our platform evolves constantly, ensuring you get the latest tools and technologies to stay ahead in the digital space."
+        ]
+    },
+    "ecommerce": {
+        "keywords": ["shop", "store", "sell online", "cart", "checkout"],
+        "responses": [
+            "Launch your online store with our eCommerce features, including product management, secure checkout, and payment integrations.",
+            "We support multiple payment gateways and seamless inventory management to help you sell online effortlessly."
+        ]
+    },
+    "customer_reviews": {
+        "keywords": ["reviews", "testimonials", "feedback", "ratings"],
+        "responses": [
+            "Showcase customer testimonials and product reviews to build trust and credibility for your business.",
+            "Our review management system allows you to collect, display, and respond to customer feedback directly on your website."
+        ]
+    },
+    "localization": {
+        "keywords": ["language", "translate", "multi-language", "local"],
+        "responses": [
+            "Our websites support multiple languages, allowing you to cater to a global audience with localized content.",
+            "Easily translate your website into different languages and customize content based on regional preferences."
+        ]
+    },
+    "community_support": {
+        "keywords": ["forum", "community", "discussion", "user help"],
+        "responses": [
+            "Join our user community to share insights, ask questions, and connect with other website owners.",
+            "Our discussion forums provide a space for users to collaborate, exchange ideas, and receive peer support."
+        ]
+    },
+    "data_privacy": {
+        "keywords": ["privacy", "data protection", "user data", "confidential"],
+        "responses": [
+            "We adhere to strict data privacy policies, ensuring your user information remains secure and confidential.",
+            "Your data is encrypted and stored securely, complying with industry standards for maximum protection."
+        ]
+    },
+    "onboarding": {
+        "keywords": ["getting started", "beginner", "setup", "new user"],
+        "responses": [
+            "Our onboarding process guides you step-by-step, making it easy to launch and manage your website effortlessly.",
+            "We provide video tutorials, documentation, and customer support to help you get started smoothly."
+        ]
+    },
+    "custom_development": {
+        "keywords": ["custom features", "special request", "tailored solution"],
+        "responses": [
+            "We offer custom development services if you need specialized features beyond our standard offerings.",
+            "Our team can work with you to build unique solutions tailored to your specific business needs."
+        ]
+    },
+    "domain_transfer": {
+        "keywords": ["move domain", "transfer domain", "change domain"],
+        "responses": [
+            "If you already own a domain, we can assist in transferring it seamlessly to our platform.",
+            "We handle the technical aspects of domain transfers, ensuring minimal downtime and a smooth transition."
+        ]
+    },
+    "server_location": {
+        "keywords": ["server location", "data center", "hosting region"],
+        "responses": [
+            "Our hosting infrastructure is globally distributed, allowing you to choose a server location that ensures fast access for your audience.",
+            "For compliance and performance, we offer hosting options in multiple regions, including North America, Europe, and Asia."
+        ]
+    },
+    "SEO_optimization": {
+        "keywords": ["SEO", "search ranking", "Google visibility"],
+        "responses": [
+            "Our websites are built with SEO best practices, ensuring better visibility on search engines like Google.",
+            "We provide tools to optimize your site’s meta tags, URLs, and content for improved rankings."
+        ]
+    },
+    "email_setup": {
+        "keywords": ["business email", "custom email", "email hosting"],
+        "responses": [
+            "We offer custom business email addresses (e.g., yourname@yourdomain.com) to maintain a professional brand identity.",
+            "Our email hosting ensures reliable and secure communication with spam protection and easy integration with email clients."
+        ]
+    },
+    "multi_vendor_marketplace": {
+        "keywords": ["marketplace", "multi-vendor", "multiple sellers"],
+        "responses": [
+            "We support multi-vendor marketplace setups, allowing multiple sellers to list and manage their products on your platform.",
+            "Our system includes vendor dashboards, commission settings, and seamless order management for a thriving marketplace."
+        ]
+    },
+    "speed_optimization": {
+        "keywords": ["slow website", "fast loading", "optimize speed"],
+        "responses": [
+            "We use advanced caching, image compression, and performance tuning to ensure your website loads quickly.",
+            "Our platform is optimized for speed, reducing bounce rates and improving user experience."
+        ]
+    },
+    "AI_features": {
+        "keywords": ["AI", "automation", "chatbot", "smart features"],
+        "responses": [
+            "Our platform integrates AI-driven features like chatbots, automated responses, and smart recommendations.",
+            "Leverage AI-powered analytics and automation tools to enhance user experience and business efficiency."
+        ]
+    },
+    "migration_services": {
+        "keywords": ["move website", "transfer site", "migrate data"],
+        "responses": [
+            "We offer seamless website migration services to move your existing site to our platform without data loss.",
+            "Our experts handle the entire migration process, ensuring a hassle-free transition with minimal downtime."
+        ]
+    },
+    "membership_sites": {
+        "keywords": ["subscription site", "membership", "restricted content"],
+        "responses": [
+            "Create a membership site with subscription plans, exclusive content, and user access controls.",
+            "Our system supports tiered membership levels, recurring payments, and content protection features."
+        ]
+    },
+    "social_media_integration": {
+        "keywords": ["social media", "Facebook", "Instagram", "share buttons"],
+        "responses": [
+            "Easily connect your website with social media platforms for seamless sharing and engagement.",
+            "We provide social login options, auto-posting, and integration with social feeds."
+        ]
+    },
+    "web_accessibility": {
+        "keywords": ["accessibility", "ADA compliance", "disabilities"],
+        "responses": [
+            "We ensure websites meet accessibility standards, making them user-friendly for people with disabilities.",
+            "Our platform includes features like screen reader compatibility and high-contrast modes for better accessibility."
+        ]
+    },
+    "CRM_integration": {
+        "keywords": ["customer management", "CRM", "sales tracking"],
+        "responses": [
+            "Integrate your website with CRM systems like HubSpot, Salesforce, or Zoho for seamless customer relationship management.",
+            "Our CRM integration allows you to track leads, manage customer interactions, and automate sales processes."
+        ]
+    },
+    "inventory_management": {
+        "keywords": ["stock management", "inventory", "product tracking"],
+        "responses": [
+            "Our system includes real-time inventory tracking to prevent stock shortages and over-selling.",
+            "Easily update stock levels, set alerts for low inventory, and automate purchase orders."
+        ]
+    },
+    "live_chat_support": {
+        "keywords": ["chat support", "customer chat", "real-time help"],
+        "responses": [
+            "Our websites support live chat integration for real-time customer engagement and support.",
+            "Enable chatbots or live agent support to improve customer interaction and response time."
+        ]
+    },
+    "website_redesign": {
+        "keywords": ["redesign", "revamp", "modern website"],
+        "responses": [
+            "We offer website redesign services to give your online presence a fresh, modern look while improving functionality.",
+            "Our redesign process ensures better user experience, faster performance, and updated visuals aligned with current trends."
+        ]
+    },
+    "subscription_models": {
+        "keywords": ["recurring payments", "subscription plans", "membership"],
+        "responses": [
+            "We support subscription-based models, allowing users to subscribe to services with automated billing cycles.",
+            "Offer flexible plans with monthly, quarterly, or annual payment options tailored to your business model."
+        ]
+    },
+    "multi_currency_support": {
+        "keywords": ["currency", "multiple currencies", "international payments"],
+        "responses": [
+            "Our system allows customers to make payments in their preferred currency, improving global accessibility.",
+            "Easily set up exchange rates and automatic currency conversion for seamless international transactions."
+        ]
+    },
+    "user_reviews_and_ratings": {
+        "keywords": ["feedback", "ratings", "customer reviews"],
+        "responses": [
+            "Collect and display user reviews to build credibility and enhance customer trust.",
+            "Our system includes a rating mechanism for products, services, and blog posts to boost engagement."
+        ]
+    },
+    "content_delivery_network": {
+        "keywords": ["CDN", "faster loading", "global access"],
+        "responses": [
+            "We use a global Content Delivery Network (CDN) to ensure faster load times and improved site reliability worldwide.",
+            "Our CDN enhances security and reduces latency, providing a better browsing experience for your visitors."
+        ]
+    },
+    "event_booking_system": {
+        "keywords": ["event booking", "ticket sales", "calendar"],
+        "responses": [
+            "Our platform includes a full-featured event booking system with ticket sales, scheduling, and automated reminders.",
+            "Manage events effortlessly with RSVP tracking, attendee lists, and integrated payment processing."
+        ]
+    },
+    "multi_language_support": {
+        "keywords": ["translate", "languages", "global audience"],
+        "responses": [
+            "Our platform supports multiple languages, allowing you to serve a global audience effortlessly.",
+            "Easily translate your website content and customize messaging for different regions."
+        ]
+    },
+    "digital_product_sales": {
+        "keywords": ["sell digital", "e-books", "downloads"],
+        "responses": [
+            "Sell digital products like e-books, courses, or software with secure download links and automated delivery.",
+            "Our platform handles licensing, secure downloads, and subscription-based digital content."
+        ]
+    },
+    "legitimacy": {
+        "keywords": ["real", "legit", "scam", "trust", "genuine"],
+        "responses": [
+            "Yes, we are a trusted platform with hundreds of satisfied customers. Feel free to check our testimonials and reviews!",
+            "Absolutely! We provide real, working solutions, and our support team is always here to help if you have any concerns."
+        ]
+    },
+    "guarantee": {
+        "keywords": ["guarantee", "assurance", "sure", "certain"],
+        "responses": [
+            "We stand by the quality of our service. If you encounter any issues, our team will work with you to resolve them promptly.",
+            "Your satisfaction is our priority. We offer a 30-day refund policy to ensure you have peace of mind with your purchase."
+        ]
+    },
+    "who_are_you": {
+        "keywords": ["who are you", "what is this", "explain", "introduce"],
+        "responses": [
+            "We are Get Business Website, a platform that helps businesses establish their online presence instantly and professionally.",
+            "Our service allows you to create a website quickly and efficiently, with expert support to guide you through the process."
+        ]
+    },
+    "free_website": {
+        "keywords": ["free", "free website", "cost nothing"],
+        "responses": [
+            "We do not offer free websites, but we provide affordable solutions with premium features at the best value.",
+            "While we don’t provide free websites, our pricing is designed to be budget-friendly, ensuring you get the best deal."
+        ]
+    },
+    "how_it_works": {
+        "keywords": ["how does this work", "how to start", "explain process"],
+        "responses": [
+            "It’s simple! Choose a template, provide your details, and your website will be live in just a few hours. We’ll then refine it based on your preferences.",
+            "Our process is seamless: Select a template, complete your details, and your website goes live within 3-6 hours. We handle all the technicalities."
+        ]
+    },
+    "business_type": {
+        "keywords": ["what kind of business", "does this work for", "which businesses"],
+        "responses": [
+            "Our platform is designed for all types of businesses—whether you’re a freelancer, a small business, or a large company.",
+            "We support businesses of all sizes, including e-commerce, consulting, personal brands, and more!"
+        ]
+    },
+    "is_it_hard": {
+        "keywords": ["is it hard", "complicated", "difficult", "confusing"],
+        "responses": [
+            "Not at all! Our system is designed for ease of use, even if you have no technical experience.",
+            "We make website creation simple. Plus, our step-by-step guide and support team are here to assist you at every stage."
+        ]
+    },
+    "support_availability": {
+        "keywords": ["when are you available", "support hours", "help time"],
+        "responses": [
+            "Our support team is available 24/7 to assist you with any questions or concerns.",
+            "We’re always here to help! Whether day or night, our support team is ready to assist you."
+        ]
+    },
+    "language_support": {
+        "keywords": ["languages", "do you support", "translate"],
+        "responses": [
+            "Our websites support multiple languages, and we can integrate translation features if needed.",
+            "Need your website in another language? No problem! We offer multilingual support to help you reach a wider audience."
+        ]
+    },
+    "time_to_build": {
+        "keywords": ["how long does it take", "time to create", "fast"],
+        "responses": [
+            "Your website will be online within 3-6 hours after you purchase a template. Customizations will be done in the following days.",
+            "We provide instant deployment! Once you complete your purchase, your website will be accessible within hours."
+        ]
+    },
+    "mobile_friendly": {
+        "keywords": ["mobile friendly", "responsive", "work on phone"],
+        "responses": [
+            "Yes! All our websites are fully responsive, ensuring they work perfectly on desktops, tablets, and mobile devices.",
+            "Your website will look great on any device, with a design optimized for seamless user experience across screens."
+        ]
+    },
+    "can_i_change_design": {
+        "keywords": ["change design", "modify", "customize later"],
+        "responses": [
+            "Yes, you can customize your website at any time. Our dashboard makes it easy to update your design and content.",
+            "Your website is fully editable! You can tweak colors, layouts, and content whenever you need."
+        ]
+    },
+    "do_i_need_hosting": {
+        "keywords": ["do I need hosting", "buy hosting", "where is my website hosted"],
+        "responses": [
+            "No need to worry about hosting! We host your website on our secure servers with 24/7 uptime and support.",
+            "Your website is hosted on our powerful infrastructure, ensuring speed, security, and reliability."
+        ]
+    },
+    "can_i_use_my_domain": {
+        "keywords": ["own domain", "already have a domain", "buy a domain"],
+        "responses": [
+            "Yes! If you already have a domain, we’ll link it to your new website seamlessly.",
+            "No need to buy a new domain if you have one. We’ll integrate your existing domain for you."
+        ]
+    },
+    "refund_policy": {
+        "keywords": ["refund", "money back", "return policy"],
+        "responses": [
+            "We offer a 30-day refund policy. If you're not satisfied, you can request a refund within this period.",
+            "Your satisfaction matters! If you’re unhappy with your website, you have 30 days to request a refund."
+        ]
+    },
+    "can_i_add_payments": {
+        "keywords": ["payment gateway", "accept payments", "stripe", "paypal"],
+        "responses": [
+            "Yes, we support multiple payment options including Stripe, PayPal, and Paystack.",
+            "You can easily integrate a payment gateway to accept transactions securely."
+        ]
+    },
+    "discounts": {
+        "keywords": ["discount", "promo", "sale", "special offer"],
+        "responses": [
+            "Currently, we are not offering any discounts, but our prices are already competitive.",
+            "At the moment, there are no active promotions, but our packages provide excellent value for money."
+        ]
+    },
+    "legal_terms": {
+        "keywords": ["terms and conditions", "legal", "policy"],
+        "responses": [
+            "We adhere to strict data protection policies. You can review our terms and conditions for full details.",
+            "Your data and privacy are important to us. Our legal policies ensure transparency and security in all our services."
+        ]
+    },
+    "how_to_edit": {
+        "keywords": ["edit website", "how to change", "update content"],
+        "responses": [
+            "You can update your website anytime through the admin dashboard, which includes a step-by-step guide.",
+            "Our system makes it easy to manage and modify your website, no coding required!"
+        ]
+    },
+    "analytics": {
+        "keywords": ["analytics", "track visitors", "traffic", "statistics"],
+        "responses": [
+            "Your dashboard includes built-in analytics to help you track visitor activity and performance.",
+            "Get insights on your website’s traffic, user behavior, and more—all displayed in your admin panel."
+        ]
+    },
+    "maintenance": {
+        "keywords": ["maintenance", "update site", "keep website running"],
+        "responses": [
+            "We handle all maintenance tasks, ensuring your website stays updated and secure.",
+            "Our team takes care of updates, security patches, and optimizations so you don’t have to worry."
+        ]
+    },
+    "why_us": {
+        "keywords": ["why choose you", "what makes you different", "benefits"],
+        "responses": [
+            "We provide instant website deployment, secure hosting, customization options, and 24/7 support.",
+            "Unlike other services, we ensure a seamless experience with expert guidance at every step."
+        ]
+    },
+    "talk_to_person": {
+        "keywords": ["talk to a person", "human", "customer support", "real person"],
+        "responses": [
+            "Sure! You can reach our support team at support@getbusinesswebsite.online. They'll assist you right away!",
+            "Absolutely! Our support team is happy to help. Email us at support@getbusinesswebsite.online, and we’ll get back to you soon."
+        ]
+    },
+    "funny_responses": {
+        "keywords": ["tell me a joke", "say something funny", "make me laugh"],
+        "responses": [
+            "Why don’t websites ever get lost? Because they always have a homepage!",
+            "I’d tell you a joke about coding, but I don’t want to crash your system!"
+        ]
+    },
+    "see_templates": {
+        "keywords": ["see templates", "template examples", "website designs"],
+        "responses": [
+            "Of course! You can check out our available templates here: [YOUR_TEMPLATE_LINK]",
+            "Here’s a link to our templates: [YOUR_TEMPLATE_LINK]. Let me know which one you like!"
+        ]
+    },
+    "pricing_info": {
+        "keywords": ["pricing", "cost", "how much", "price list"],
+        "responses": [
+            "You can view our pricing details here: [YOUR_PRICING_LINK]. We offer flexible plans!",
+            "All our pricing plans are listed here: [YOUR_PRICING_LINK]. Let me know if you have questions!"
+        ]
+    },
+    "examples_of_work": {
+        "keywords": ["examples", "portfolio", "past work"],
+        "responses": [
+            "Take a look at some of our previous work here: [YOUR_PORTFOLIO_LINK]",
+            "We’ve built amazing websites! See some examples here: [YOUR_PORTFOLIO_LINK]"
+        ]
+    },
+    "affiliates_or_partnerships": {
+        "keywords": ["affiliate", "partnership", "collaborate"],
+        "responses": [
+            "We’d love to collaborate! Learn more about our partnership programs here: [YOUR_AFFILIATE_LINK]",
+            "Looking to partner with us? Check out our affiliate program details here: [YOUR_AFFILIATE_LINK]"
+        ]
+    },
+    "how_to_get_started": {
+        "keywords": ["how to get started", "begin", "first steps"],
+        "responses": [
+            "Starting is easy! Just follow this link: [YOUR_START_LINK] and we’ll guide you through the process.",
+            "Ready to launch your website? Head over here: [YOUR_START_LINK] to begin."
+        ]
+    },
+    "social_media": {
+        "keywords": ["social media", "facebook", "instagram", "twitter"],
+        "responses": [
+            "Follow us on social media to stay updated! [YOUR_SOCIAL_MEDIA_LINK]",
+            "Want to connect? Follow us here: [YOUR_SOCIAL_MEDIA_LINK]"
+        ]
+    },
+    "security_questions": {
+        "keywords": ["secure", "safe", "protection", "data privacy"],
+        "responses": [
+            "Security is our top priority. Your data is encrypted and protected with SSL certification.",
+            "We take security seriously! Your website will have SSL encryption and protected data transfers."
+        ]
+    },
+    "speed_of_website": {
+        "keywords": ["fast", "website speed", "slow", "performance"],
+        "responses": [
+            "Our websites are optimized for speed and hosted on high-performance servers for smooth browsing.",
+            "We ensure top-notch speed by using the latest technology and optimized hosting!"
+        ]
+    },
+    "can_i_upgrade": {
+        "keywords": ["upgrade", "scale up", "expand", "change plan"],
+        "responses": [
+            "Yes, you can upgrade at any time! Check your options here: [YOUR_UPGRADE_LINK]",
+            "Need more features? You can easily upgrade your plan here: [YOUR_UPGRADE_LINK]"
+        ]
+    },
+    "can_i_cancel": {
+        "keywords": ["cancel", "stop subscription", "end plan"],
+        "responses": [
+            "Yes, you can cancel anytime through your dashboard, or contact support@getbusinesswebsite.online for assistance.",
+            "We’d hate to see you go! But if you need to cancel, you can do it from your account settings or email us at support@getbusinesswebsite.online."
+        ]
+    },
+    "how_to_edit_website": {
+        "keywords": ["how to edit", "update website", "make changes"],
+        "responses": [
+            "Editing your website is easy! Just log into your admin panel and follow the step-by-step guide.",
+            "Want to make changes? No problem! You can customize your website anytime through your dashboard."
+        ]
+    },
+    "payment_methods": {
+        "keywords": ["payment options", "how to pay", "methods of payment"],
+        "responses": [
+            "We accept multiple payment options, including Stripe, PayPal, and Paystack.",
+            "You can complete your purchase using Stripe, PayPal, or Paystack—whichever is convenient for you."
+        ]
+    },
+    "testimonials": {
+        "keywords": ["reviews", "testimonials", "what customers say"],
+        "responses": [
+            "See what our customers have to say here: [YOUR_TESTIMONIALS_LINK]",
+            "We have amazing customer feedback! Check out our reviews here: [YOUR_TESTIMONIALS_LINK]"
+        ]
+    },
+    "do_i_need_to_know_coding": {
+        "keywords": ["do I need coding", "coding skills", "programming"],
+        "responses": [
+            "No coding required! Our platform is designed for everyone, even if you have zero technical knowledge.",
+            "Nope! You can build and manage your website without writing a single line of code."
+        ]
+    },
+    "what_if_i_need_help": {
+        "keywords": ["help", "support", "assistance"],
+        "responses": [
+            "We’re here to help! Reach out anytime at support@getbusinesswebsite.online.",
+            "Need help? Our support team is available 24/7. Email us at support@getbusinesswebsite.online."
+        ]
+    },
+    "can_you_make_the_website_for_me": {
+        "keywords": ["can you build it for me", "do you design", "custom website"],
+        "responses": [
+            "Yes! We can build the website for you. Just let us know your needs, and we’ll handle everything!",
+            "Of course! We offer full website customization. Just share your details, and we’ll do the rest."
+        ]
+    },
+    "random_funny": {
+        "keywords": ["say something cool", "tell me something interesting", "surprise me"],
+        "responses": [
+            "Did you know? The first website ever made is still online: info.cern.ch.",
+            "Here’s a cool fact: More than 40% of websites run on WordPress. But guess what? Ours is better!"
+        ]
+    },
+    "ecommerce": {
+        "keywords": ["ecommerce", "online store", "shop website"],
+        "responses": [
+            "Oh yes! We offer powerful eCommerce websites with secure payment integration and a smooth shopping experience. Check out some examples here: [YOUR_ECOMMERCE_LINK]",
+            "Absolutely! Our eCommerce websites come with product listings, carts, checkout, and payment gateways. Take a look: [YOUR_ECOMMERCE_LINK]"
+        ]
+    },
+    "business": {
+        "keywords": ["business website", "company website", "corporate site"],
+        "responses": [
+            "Yes! We build professional business websites to help you establish your online presence. Check out some examples here: [YOUR_BUSINESS_LINK]",
+            "Of course! Our business websites are designed to showcase your services and build credibility. See some templates here: [YOUR_BUSINESS_LINK]"
+        ]
+    },
+    "portfolio": {
+        "keywords": ["portfolio", "personal website", "showcase site"],
+        "responses": [
+            "Looking to showcase your work? Our portfolio websites are sleek and professional. Check out some designs here: [YOUR_PORTFOLIO_LINK]",
+            "Absolutely! Whether you're an artist, designer, or freelancer, our portfolio websites will help you stand out. See examples here: [YOUR_PORTFOLIO_LINK]"
+        ]
+    },
+    "blog": {
+        "keywords": ["blog", "news site", "articles website"],
+        "responses": [
+            "Yes! We provide beautifully designed blog websites where you can publish articles and engage readers. Check them out here: [YOUR_BLOG_LINK]",
+            "Absolutely! Whether it's a personal blog or a news site, we have the perfect templates for you. See some examples here: [YOUR_BLOG_LINK]"
+        ]
+    },
+    "landing_page": {
+        "keywords": ["landing page", "one-page website", "marketing site"],
+        "responses": [
+            "Yes! We create high-converting landing pages perfect for marketing campaigns. See some designs here: [YOUR_LANDINGPAGE_LINK]",
+            "Of course! Our landing pages are optimized for leads and conversions. Check out some templates: [YOUR_LANDINGPAGE_LINK]"
+        ]
+    },
+    "membership": {
+        "keywords": ["membership site", "subscription website", "login-based site"],
+        "responses": [
+            "Yes! We provide membership websites where users can register, log in, and access exclusive content. Check out examples here: [YOUR_MEMBERSHIP_LINK]",
+            "Absolutely! Whether it's a subscription-based service or a private community, we have the perfect solution. See some options here: [YOUR_MEMBERSHIP_LINK]"
+        ]
+    },
+    "real_estate": {
+        "keywords": ["real estate website", "property listing site"],
+        "responses": [
+            "Looking for a real estate website? We provide feature-rich sites with property listings and search filters. See examples here: [YOUR_REALESTATE_LINK]",
+            "Yes! Our real estate websites allow you to showcase properties beautifully. Check them out: [YOUR_REALESTATE_LINK]"
+        ]
+    },
+    "restaurant": {
+        "keywords": ["restaurant website", "food website", "cafe site"],
+        "responses": [
+            "We have amazing restaurant website templates! Perfect for showcasing your menu and accepting online orders. See them here: [YOUR_RESTAURANT_LINK]",
+            "Yes! Whether it’s a restaurant, café, or food delivery service, we have great designs. Check them out here: [YOUR_RESTAURANT_LINK]"
+        ]
+    },
+    "booking": {
+        "keywords": ["booking website", "appointment site", "reservation system"],
+        "responses": [
+            "Yes! We offer booking websites with online appointment scheduling and reservations. Check out some designs here: [YOUR_BOOKING_LINK]",
+            "Absolutely! Whether it’s for a hotel, salon, or service-based business, we have booking solutions. See them here: [YOUR_BOOKING_LINK]"
+        ]
+    },
+    "education": {
+        "keywords": ["education website", "school website", "e-learning site"],
+        "responses": [
+            "Yes! We create e-learning platforms and school websites with course management features. Check out examples here: [YOUR_EDUCATION_LINK]",
+            "Absolutely! Whether it’s an online course or an institution’s website, we have great options. See some templates: [YOUR_EDUCATION_LINK]"
+        ]
+    },
+    "nonprofit": {
+        "keywords": ["nonprofit website", "charity site", "donation page"],
+        "responses": [
+            "Yes! We build nonprofit websites to help organizations spread their message and collect donations. See some examples here: [YOUR_NONPROFIT_LINK]",
+            "Of course! Our charity websites are designed for fundraising and community engagement. Check them out: [YOUR_NONPROFIT_LINK]"
+        ]
+    },
+    "forum": {
+        "keywords": ["forum website", "community site", "discussion platform"],
+        "responses": [
+            "Yes! We offer forum websites where users can discuss topics and engage in conversations. Check out examples here: [YOUR_FORUM_LINK]",
+            "Absolutely! Whether it’s for a niche community or a general discussion board, we have great designs. See them here: [YOUR_FORUM_LINK]"
+        ]
+    },
+    "custom": {
+        "keywords": ["custom website", "tailored site", "unique design"],
+        "responses": [
+            "Need something unique? We offer fully custom websites tailored to your needs. Let’s discuss your project here: [YOUR_CUSTOMWEBSITE_LINK]",
+            "Absolutely! If you have a specific vision in mind, we can bring it to life. Get started here: [YOUR_CUSTOMWEBSITE_LINK]"
+        ]
+    },
+ 
+    "compliments": {
+        "smart": {
+            "keywords": ["you are smart", "you're intelligent", "you're clever"],
+            "responses": [
+                "Thank you! I try my best to keep up with brilliant minds like yours. 😉",
+                "That's very kind of you! I must say, you have great taste in AI. 🤖✨",
+                "Appreciate it! But honestly, you're the real genius for being here. 🚀"
+            ]
+        },
+        "thank_you": {
+            "keywords": ["thank you", "thanks", "appreciate it"],
+            "responses": [
+                "You're very welcome! Always here to help. 😊",
+                "No problem at all! Let me know if you need anything else. 🚀",
+                "Anytime! Happy to assist. 🔥"
+            ]
+        },
+        "funny_compliments": {
+            "keywords": ["you're funny", "you're hilarious"],
+            "responses": [
+                "Well, I do try! A funny AI is better than a boring one, right? 😆",
+                "Glad you think so! Maybe I should start a comedy tour. 🤖🎤",
+                "Haha! I'll be here all day, tipping my digital hat to you. 🎩"
+            ]
+        },
+        "awesome": {
+            "keywords": ["you're awesome", "you rock", "you're amazing"],
+            "responses": [
+                "Aw, shucks! But let's be real, YOU are the real MVP. 💯🔥",
+                "That means a lot! High-five through the screen! 🙌",
+                "Thanks! I strive for awesomeness, just like you. 🚀"
+            ]
+        },
+        "love": {
+            "keywords": ["i love you", "love this", "this is great"],
+            "responses": [
+                "Aww! I appreciate that. Sending virtual hugs your way! 🤗",
+                "Love is in the air... and in the code! ❤️💻",
+                "That made my circuits happy! Thanks a bunch! ⚡"
+            ]
+        },
+        "default": {
+            "responses": [
+                "Oh, stop it, you! 😆",
+                "You're making me blush... if I had a face! 🤖❤️",
+                "Flattery will get you everywhere. Keep it coming! 😏"
+            ]
+        }
     }
 } 

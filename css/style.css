@@ -40,7 +40,7 @@
 
 .f_image{
     position: absolute;
-    top: -10rem;
+    top: calc( 5vh + 5rem);
     right: -5rem;
     width: 60%;
 }

@@ -111,7 +111,7 @@ require_once 'backend/track_visitor.php';
         <main>
             <section class="new_hero">
                 <div class="f_image">
-                    <img src="./assets/divinethedeveloper_hero_2.png" alt="Ready-Made Professional Business Websites" >
+                    <img src="./assets/wine.webp" alt="Ready-Made Professional Business Websites" >
                 </div>
                 <div class="t_left"></div>
                 <div class="b_left"></div>

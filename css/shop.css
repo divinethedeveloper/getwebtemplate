@@ -19,18 +19,19 @@
 
 .planebg{
     width: 100%;
-    background: url(../assets/planebg.png);
-    background-size: cover;
+     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     height: 70%;
-    display: flex;
+    background: linear-gradient(90deg, #c4c6ca, #c4c6ca);
+     display: flex;
+      border-bottom-right-radius: calc(15vw + 4rem);
 
 }
 .main_bg{
     height: 100%; 
-    background: url(../assets/divinethedeveloper.png);
+    background: url(../assets/getbusinesswebsite_rasor.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -50,9 +51,13 @@
      z-index: 10;
      position: absolute;
      right: 0;
-     top: 20vh;
-     width: 40%;
+      width: calc(20rem + 20%);
+      height: 100%;
       padding-left: 6vw;
+      background: linear-gradient(170deg, #fa709a,#fa7099d1, #fa709960, #c4c6ca3c, #fa70990b );
+      border-bottom-left-radius: calc(15vw + 4rem);
+      border: 4px solid rgb(255, 255, 255);
+
 }
 .hero h1{
     font-size: calc(5rem + 1vw);
@@ -128,7 +133,7 @@
 }
 
 @media (max-width: 768px) {
-    .hero{
+    /* .hero{
         width: 100%;
         padding: 2rem;
         color: #fa709a;
@@ -146,5 +151,5 @@
         background-blend-mode: overlay;
         background-color: rgba(251, 251, 251, 0.9);
         
-    }
+    } */
 }

@@ -7,8 +7,8 @@
 <div class="chatbot-container" id="chatbot-container">
     <div class="chatbot-header">
         <div class="chatbot-title">
-            <img src="./assets/logo/getbusinesswebsite-logo.png" alt="Ministry Logo" class="chatbot-logo">
-            <span>Ministry Assistant</span>
+            <img src="./assets/logo/fav.png" alt="Ministry Logo" class="chatbot-logo">
+            <span>GET BUSINESS WEBSITE - CHATBOT</span>
         </div>
         <button class="chatbot-close" id="chatbot-close">
             <i class="bi bi-x-lg"></i>
