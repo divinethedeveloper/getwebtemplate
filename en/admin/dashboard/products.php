@@ -187,88 +187,157 @@ $template_stats = getAllTemplateStats();
         }
 
         .modal.active {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 2rem;
+            display: block;
         }
 
         .modal-content {
-            background: var(--card-background);
-            padding: 2rem;
-            border-radius: 0.75rem;
-            width: 100%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
+            background: white;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
         }
 
-        .close-modal {
-            background: none;
-            border: none;
+        .modal-header h2 {
             font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
         }
 
-        .template-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .form-section {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-section.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-section h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+            color: #374151;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
-            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
             font-weight: 500;
+            color: #374151;
         }
 
-        .form-group input,
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="url"],
         .form-group select,
         .form-group textarea {
+            width: 100%;
             padding: 0.75rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: white;
+            font-size: 0.95rem;
         }
 
         .form-group textarea {
-            min-height: 100px;
+            height: 100px;
             resize: vertical;
         }
 
-        .image-uploads {
+        .image-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1rem;
         }
 
-        .submit-btn {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            font-weight: 500;
-            margin-top: 1rem;
+        .image-preview {
+            margin-top: 0.5rem;
+            min-height: 100px;
+            background: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .submit-btn:hover {
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .cancel-button,
+        .submit-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cancel-button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            color: #374151;
+        }
+
+        .submit-button {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+        }
+
+        .cancel-button:hover {
+            background: #e5e7eb;
+        }
+
+        .submit-button:hover {
             background: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal {
+                padding: 1rem;
+            }
+            
+            .modal-content {
+                margin: 0;
+            }
         }
     </style>
 </head>
@@ -416,75 +485,102 @@ $template_stats = getAllTemplateStats();
     <div id="addTemplateModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add New Template</h3>
-                <button class="close-modal" onclick="toggleModal()">&times;</button>
+                <h2>Add New Template</h2>
+                <button class="close-modal" onclick="toggleModal()">
+                    <i class="bi bi-x-lg"></i>
+                </button>
             </div>
-            <form class="template-form" id="add-template-form" action="../../../backend/upload.php" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="name">Template Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter template name" required>
-                </div>
+            <div class="modal-body">
+                <form id="addTemplateForm" onsubmit="handleTemplateSubmit(event)" enctype="multipart/form-data">
+                    <div class="form-grid">
+                        <!-- Basic Information -->
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            <div class="form-group">
+                                <label for="name">Template Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter template name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="portfolio">Portfolio</option>
+                                    <option value="digital_agency">Digital Agency</option>
+                                    <option value="corporate">Corporate</option>
+                                    <option value="ecommerce">E-Commerce</option>
+                                    <option value="blog">Blog</option>
+                                    <option value="nonprofit">Nonprofit</option>
+                                    <option value="education">Education</option>
+                                    <option value="entertainment">Entertainment</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                </select>
+                            </div>
 
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category" required>
-                        <option value="">Select a category</option>
-                        <option value="portfolio">Portfolio</option>
-                        <option value="digital_agency">Digital Agency</option>
-                        <option value="corporate">Corporate</option>
-                        <option value="ecommerce">E-Commerce</option>
-                        <option value="blog">Blog</option>
-                        <option value="nonprofit">Nonprofit</option>
-                        <option value="education">Education</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="technology">Technology</option>
-                        <option value="healthcare">Healthcare</option>
-                    </select>
-                </div>
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="number" id="price" name="price" step="0.01" placeholder="Enter price" required>
+                            </div>
 
-                <div class="form-group">
-                    <label for="price">Price ($)</label>
-                    <input type="number" id="price" name="price" step="0.01" placeholder="Enter price" required>
-                </div>
+                            <div class="form-group">
+                                <label for="short_description">Short Description</label>
+                                <textarea id="short_description" name="short_description" placeholder="Enter a brief description" required></textarea>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="short_description">Short Description</label>
-                    <textarea id="short_description" name="short_description" placeholder="Enter a brief description" required></textarea>
-                </div>
+                        <!-- Main Images -->
+                        <div class="form-section">
+                            <h3>Main Images</h3>
+                            <div class="form-group">
+                                <label for="main_image">Main Image</label>
+                                <input type="file" id="main_image" name="main_image" accept="image/*" required>
+                                <div class="image-preview" id="main-image-preview"></div>
+                            </div>
 
-                <div class="form-group">
-                    <label for="main_image">Main Image</label>
-                    <input type="file" id="main_image" name="main_image" accept="image/*" required>
-                </div>
+                            <div class="form-group">
+                                <label for="mobile_image">Mobile Image</label>
+                                <input type="file" id="mobile_image" name="mobile_image" accept="image/*" required>
+                                <div class="image-preview" id="mobile-image-preview"></div>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="mobile_image">Mobile Image</label>
-                    <input type="file" id="mobile_image" name="mobile_image" accept="image/*" required>
-                </div>
+                        <!-- Additional Images -->
+                        <div class="form-section full-width">
+                            <h3>Template Screenshots</h3>
+                            <div class="image-grid">
+                                <?php for($i = 1; $i <= 10; $i++): ?>
+                                <div class="form-group">
+                                    <label for="shot_<?php echo $i; ?>">Screenshot <?php echo $i; ?></label>
+                                    <input type="file" id="shot_<?php echo $i; ?>" name="shot_<?php echo $i; ?>" accept="image/*" <?php echo $i === 1 ? 'required' : ''; ?>>
+                                    <div class="image-preview" id="shot-<?php echo $i; ?>-preview"></div>
+                                </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label>Additional Template Images</label>
-                    <div class="image-uploads">
-                        <input type="file" name="shot_1" accept="image/*" required>
-                        <input type="file" name="shot_2" accept="image/*">
-                        <input type="file" name="shot_3" accept="image/*">
-                        <input type="file" name="shot_4" accept="image/*">
-                        <input type="file" name="shot_5" accept="image/*">
+                        <!-- Additional Details -->
+                        <div class="form-section full-width">
+                            <h3>Additional Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="rating">Rating</label>
+                                    <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" placeholder="Enter rating (1-5)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="preview_url">Preview URL</label>
+                                    <input type="url" id="preview_url" name="preview_url" placeholder="Enter preview URL">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="rating">Rating</label>
-                    <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" placeholder="Enter rating (1-5)">
-                </div>
-
-                <div class="form-group">
-                    <label for="preview_url">Preview URL</label>
-                    <input type="url" id="preview_url" name="preview_url" placeholder="Enter preview URL">
-                </div>
-
-                <button type="submit" class="submit-btn">Add Template</button>
-            </form>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button" onclick="toggleModal()">Cancel</button>
+                        <button type="submit" class="submit-button">Add Template</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -546,33 +642,92 @@ $template_stats = getAllTemplateStats();
             });
         });
 
-        // Add this before the existing script
         function toggleModal() {
             const modal = document.getElementById('addTemplateModal');
             modal.classList.toggle('active');
+            
+            // Reset form when closing
+            if (!modal.classList.contains('active')) {
+                document.getElementById('addTemplateForm').reset();
+            }
         }
 
-        // Update the Add Template button click handler
-        document.querySelector('.action-button').addEventListener('click', toggleModal);
-
-        // Form validation
-        document.getElementById('add-template-form').addEventListener('submit', function(e) {
-            const name = document.getElementById('name').value;
-            const category = document.getElementById('category').value;
-            const price = document.getElementById('price').value;
-            const shortDescription = document.getElementById('short_description').value;
+        function handleTemplateSubmit(event) {
+            event.preventDefault();
             
-            if (!name || !category || !price || !shortDescription) {
-                e.preventDefault();
-                alert('Please fill in all required fields');
+            const formData = new FormData(event.target);
+            
+            // Send to backend
+            fetch('/backend/admin/add_template.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Template added successfully!');
+                    toggleModal();
+                    // Refresh the templates list
+                    window.location.reload();
+                } else {
+                    alert(data.message || 'Error adding template');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to add template. Please try again.');
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('addTemplateModal');
+            if (event.target === modal) {
+                toggleModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('addTemplateModal');
+                if (modal.classList.contains('active')) {
+                    toggleModal();
+                }
             }
         });
 
-        // Close modal when clicking outside
-        document.getElementById('addTemplateModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                toggleModal();
+        // Image preview functionality
+        function handleImagePreview(input, previewId) {
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" style="max-width: 100%; max-height: 200px; object-fit: contain;">`;
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = '';
             }
+        }
+
+        // Add event listeners for image previews
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageInputs = ['main_image', 'mobile_image'];
+            for (let i = 1; i <= 10; i++) {
+                imageInputs.push(`shot_${i}`);
+            }
+            
+            imageInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('change', function() {
+                        handleImagePreview(this, `${id}-preview`);
+                    });
+                }
+            });
         });
     </script>
 </body>

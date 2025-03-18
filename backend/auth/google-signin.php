@@ -70,6 +70,7 @@ try {
         throw new Exception('Invalid ID token');
     }
 } catch (Exception $e) {
+    // Log the error
     error_log('Google Sign-In Error: ' . $e->getMessage());
     http_response_code(400);
     echo json_encode([
