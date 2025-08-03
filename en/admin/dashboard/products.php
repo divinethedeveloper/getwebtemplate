@@ -658,7 +658,7 @@ $template_stats = getAllTemplateStats();
             const formData = new FormData(event.target);
             
             // Send to backend
-            fetch('/backend/admin/add_template.php', {
+            fetch('./backend/add_template.php', {
                 method: 'POST',
                 body: formData
             })
