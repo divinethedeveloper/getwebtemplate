@@ -1,8 +1,9 @@
 <?php
 // ... existing code ...
 ?>
+
 <nav class="nav" aria-label="Main navigation">
-    <div class="search cen">
+<div class="search cen">
         <div class="search-container">
             <input id="search-input" type="text" placeholder="Search templates..." aria-label="Search templates">
             <button id="search-toggle" class="button cen" aria-label="Toggle search"><i class="bi bi-search"></i></button>
@@ -10,6 +11,34 @@
             <div class="search-dropdown" id="search-results">
                 <!-- Results will be populated here -->
             </div>
+        </div>
+    </div>
+    <div class="logo cen" onclick="location.href='../../'">
+        <a href="" title="Get Business Website - Professional Business Websites">
+            <img src="../../assets/logo/getbusinesswebsite-logo.png" alt="Get Business Website Logo - Professional Website Solutions" width="auto" height="auto">
+        </a>
+    </div>
+            <div class="cart cen">
+                <a href="javascript:void(0)" title="View Shopping Cart" aria-label="Shopping Cart" onclick="toggleCartDropdown()">
+                    <i class="bi bi-bag"></i>
+                </a>
+                <div id="cart-dropdown" class="cart-dropdown">
+                    <div class="cart-content">
+                        <p class="empty-cart-message">There are no items in your cart</p>
+                    </div>
+                </div>
+            </div>
+</nav>
+
+<!-- 
+<nav class="nav" aria-label="Main navigation">
+    <div class="search cen">
+        <div class="search-container">
+            <input id="search-input" type="text" placeholder="Search templates..." aria-label="Search templates">
+            <button id="search-toggle" class="button cen" aria-label="Toggle search"><i class="bi bi-search"></i></button>
+            
+            <div class="search-dropdown" id="search-results">
+             </div>
         </div>
     </div>
     <div class="logo cen" onclick="window.location.reload()">
@@ -22,42 +51,7 @@
             <i class="bi bi-person"></i>
         </a>
     </div>
-</nav>
-
-<!-- Google Sign-In Prompt -->
-<div id="signin-prompt" class="signin-prompt">
-    <div class="signin-content">
-        <div class="signin-header">
-            <span>Sign in to Get Business Website</span>
-            <button onclick="closeSignInPrompt()" class="close-button" aria-label="Close sign-in prompt">
-                <i class="bi bi-x"></i>
-            </button>
-        </div>
-        <div class="signin-body">
-            <div id="g_id_onload"
-                 data-client_id="1234567890-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com"
-                 data-context="signin"
-                 data-ux_mode="popup"
-                 data-callback="handleCredentialResponse"
-                 data-auto_prompt="false"
-                 data-auto_select="true"
-                 data-itp_support="true">
-            </div>
-            <div class="g_id_signin"
-                 data-type="standard"
-                 data-shape="rectangular"
-                 data-theme="outline"
-                 data-text="signin_with"
-                 data-size="large"
-                 data-logo_alignment="left"
-                 data-width="250">
-            </div>
-        </div>
-        <div id="signin-error" class="signin-error" style="display: none;">
-            <p>Unable to sign in. Please try again.</p>
-        </div>
-    </div>
-</div>
+</nav>  -->
 
 <style>
 .signin-prompt {
@@ -133,72 +127,6 @@
     }
 }
 </style>
-
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<script>
-function toggleSignInPrompt() {
-    const prompt = document.getElementById('signin-prompt');
-    prompt.classList.toggle('active');
-    document.getElementById('signin-error').style.display = 'none';
-}
-
-function closeSignInPrompt() {
-    const prompt = document.getElementById('signin-prompt');
-    prompt.classList.remove('active');
-}
-
-function handleCredentialResponse(response) {
-    if (!response.credential) {
-        showError('Sign-in failed. Please try again.');
-        return;
-    }
-
-    // Send the token to your server
-    fetch('/backend/auth/google-signin.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            credential: response.credential
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.reload();
-        } else {
-            showError(data.message || 'Sign-in failed. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        showError('Unable to complete sign-in. Please try again.');
-    });
-}
-
-function showError(message) {
-    const errorDiv = document.getElementById('signin-error');
-    errorDiv.innerHTML = `<p>${message}</p>`;
-    errorDiv.style.display = 'block';
-}
-
-// Show sign-in prompt after 3 seconds if user is not logged in
-document.addEventListener('DOMContentLoaded', function() {
-    // Only show prompt if not on mobile
-    if (window.innerWidth > 768) {
-        setTimeout(function() {
-            if (!isUserLoggedIn()) {
-                toggleSignInPrompt();
-            }
-        }, 3000);
-    }
-});
-
-function isUserLoggedIn() {
-    // Check if user is logged in by looking for session cookie
-    return document.cookie.includes('user_logged_in=true');
-}
-</script>
+ 
 
 <script src="../../scripts/nav_script.js"></script>

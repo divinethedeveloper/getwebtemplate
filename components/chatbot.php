@@ -7,8 +7,8 @@
 <div class="chatbot-container" id="chatbot-container">
     <div class="chatbot-header">
         <div class="chatbot-title">
-            <img src="./assets/logo/fav.png" alt="Ministry Logo" class="chatbot-logo">
-            <span>GET BUSINESS WEBSITE - CHATBOT</span>
+            <img src="./assets/logo/fav.png" alt="GetBusinessWebsite Logo" class="chatbot-logo">
+            <span>GET BUSINESS WEBSITE </span>
         </div>
         <button class="chatbot-close" id="chatbot-close">
             <i class="bi bi-x-lg"></i>
@@ -20,9 +20,9 @@
     </div>
     
     <div class="chatbot-input">
-        <input type="text" id="chatbot-input-field" placeholder="Type your message...">
+        <input type="text" id="chatbot-input-field" placeholder="Ask about instant websites!">
         <button id="chatbot-send">
             <i class="bi bi-send-fill"></i>
         </button>
     </div>
-</div> 
+</div>

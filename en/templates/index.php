@@ -24,17 +24,51 @@ if ($selectedCategory && $selectedCategory !== 'all') {
     $templatesResult = $conn->query($templateQuery);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Settings -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Templates - <?php echo $selectedCategory == 'all' ? 'All Categories' : ucfirst($selectedCategory); ?></title>
+
+    <!-- Dynamic Title -->
+    <title>Templates - <?php echo $selectedCategory === 'all' ? 'All Categories' : ucfirst($selectedCategory); ?> | Get Business Website</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Browse professionally designed website templates<?php echo $selectedCategory !== 'all' ? ' in the ' . ucfirst($selectedCategory) . ' category' : ''; ?>. Mobile-friendly, fast, and SEO-ready. Launch your business website today.">
+    <meta name="keywords" content="website templates, business templates, prebuilt websites, <?php echo $selectedCategory; ?> templates, responsive web design, SEO-ready templates">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://getbusinesswebsite.online/en/pages/templates<?php echo $selectedCategory !== 'all' ? '?category=' . urlencode($selectedCategory) : ''; ?>">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://getbusinesswebsite.online/en/pages/templates<?php echo $selectedCategory !== 'all' ? '?category=' . urlencode($selectedCategory) : ''; ?>">
+    <meta property="og:title" content="Templates - <?php echo $selectedCategory === 'all' ? 'All Categories' : ucfirst($selectedCategory); ?> | Get Business Website">
+    <meta property="og:description" content="Explore prebuilt website templates<?php echo $selectedCategory !== 'all' ? ' for ' . ucfirst($selectedCategory) : ''; ?>. Ready in days. No coding needed.">
+    <meta property="og:image" content="https://getbusinesswebsite.online/assets/divinethedeveloper_hero_2.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Templates - <?php echo $selectedCategory === 'all' ? 'All Categories' : ucfirst($selectedCategory); ?> | Get Business Website">
+    <meta name="twitter:description" content="Choose from ready-made, responsive templates<?php echo $selectedCategory !== 'all' ? ' in ' . ucfirst($selectedCategory) : ''; ?>. Fast launch, SEO-ready.">
+    <meta name="twitter:image" content="https://getbusinesswebsite.online/assets/divinethedeveloper_hero_2.png">
+
+    <!-- Favicons & Manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../android-chrome-512x512.png">
+    <link rel="manifest" href="../../site.webmanifest">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/shop.css">
     <link rel="stylesheet" href="../../css/nav.css">
 </head>
+
 <body>
     <div class="container">
         <?php require_once "../../components/nav.php"; ?>

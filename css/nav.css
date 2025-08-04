@@ -351,3 +351,7 @@
         color: #666;
     }
 }
+
+.account a i.bi-person {
+    color: white;
+}
