@@ -19,21 +19,57 @@ if ($result->num_rows > 0) {
     echo "No template found!";
     exit;
 }
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Basics -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($template['name']); ?></title>
+
+    <!-- Dynamic Title -->
+    <title><?php echo htmlspecialchars($template['name']); ?> | Checkout | Get Business Website</title>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Secure checkout for <?php echo htmlspecialchars($template['name']); ?>. Get your professional website template with fast delivery and seamless support.">
+    <meta name="keywords" content="checkout, website template, <?php echo htmlspecialchars($template['name']); ?>, buy website, business site template, order website, prebuilt site">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://getbusinesswebsite.online/en/pages/checkout?id=<?php echo urlencode($template_id); ?>">
+
+    <!-- Open Graph (Facebook) -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://getbusinesswebsite.online/en/pages/checkout?id=<?php echo urlencode($template_id); ?>">
+    <meta property="og:title" content="Checkout - <?php echo htmlspecialchars($template['name']); ?> | Get Business Website">
+    <meta property="og:description" content="Complete your order for <?php echo htmlspecialchars($template['name']); ?>. Launch your website in 3 days.">
+    <meta property="og:image" content="https://getbusinesswebsite.online/uploads/<?php echo $template['image']; ?>">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Checkout - <?php echo htmlspecialchars($template['name']); ?> | Get Business Website">
+    <meta name="twitter:description" content="Purchase <?php echo htmlspecialchars($template['name']); ?>. Prebuilt, responsive, and ready to launch.">
+    <meta name="twitter:image" content="https://getbusinesswebsite.online/uploads/<?php echo $template['image']; ?>">
+
+    <!-- Favicons & Web Manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../android-chrome-512x512.png">
+    <link rel="manifest" href="../../site.webmanifest">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/shop.css">
     <link rel="stylesheet" href="../../css/checkout.css">
     <link rel="stylesheet" href="../../css/glass.css">
     <link rel="stylesheet" href="../../css/nav.css">
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
+
 <body>
     <div class="container">
         <?php require_once "../../components/nav.php"; ?>
